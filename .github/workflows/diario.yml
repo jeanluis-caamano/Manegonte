@@ -9,6 +9,9 @@ on:
     - cron: "7 20 * * *" # 4:07 p. m. RD
     - cron: "7 0 * * *"  # 8:07 p. m. RD
     - cron: "7 4 * * *"  # 12:07 a. m. RD, con revisión de atraso
+  push:
+    branches: [main]
+    paths: ["sitio/**", "recolector/**", ".github/workflows/**"]
   workflow_dispatch:
     inputs:
       prueba_fallo:
