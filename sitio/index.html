@@ -47,6 +47,8 @@
   .vistas-barra { margin-top: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
                   flex-direction: column; align-items: flex-start; }
   .vistas { gap: 6px; }
+  .rotulo { font-size: 14px; font-weight: 600; color: var(--mid); margin: 0 2px 0 6px; }
+  .rotulo:first-child { margin-left: 0; }
   .vistas button { border-radius: 100px; padding: 6px 14px; color: var(--mid); }
   .vistas button:hover { color: var(--ink); }
   .vistas button.activa { background: var(--ink); border-color: var(--ink); color: #fff; font-weight: 600; }
@@ -123,7 +125,10 @@
     <div class="fila vistas" id="vistas"></div>
     <select id="elegir" hidden></select>
     <span class="fila" id="elegir-fecha" hidden style="gap: 6px;">
-      <select id="ef-d" aria-label="Día"></select><select id="ef-m" aria-label="Mes"></select><select id="ef-a" aria-label="Año"></select>
+      <span class="rotulo">Desde</span>
+      <select id="ed-d" aria-label="Desde, día"></select><select id="ed-m" aria-label="Desde, mes"></select><select id="ed-a" aria-label="Desde, año"></select>
+      <span class="rotulo">Hasta</span>
+      <select id="eh-d" aria-label="Hasta, día"></select><select id="eh-m" aria-label="Hasta, mes"></select><select id="eh-a" aria-label="Hasta, año"></select>
     </span>
   </div>
 
@@ -188,7 +193,7 @@ const PASO = 100;
 const $ = id => document.getElementById(id);
 
 let datos = [], ultimo = "";
-const estado = { vista: "fecha", valor: "", filtros: {}, orden: { col: "estacion", dir: 1 }, ocultas: new Set(), visibles: PASO };
+const estado = { vista: "fecha", valor: "", desde: "", hasta: "", filtros: {}, orden: { col: "estacion", dir: 1 }, ocultas: new Set(), visibles: PASO };
 
 /* ---------- utilidades ---------- */
 function leerCSV(texto) {
@@ -256,7 +261,7 @@ function rangoFecha(op, a, b) {
 }
 
 function filasDeLaVista() {
-  if (estado.vista === "fecha") return datos.filter(d => d.fecha === estado.valor);
+  if (estado.vista === "fecha") return datos.filter(d => d.fecha >= estado.desde && d.fecha <= estado.hasta);
   if (!estado.valor) return [];
   return datos.filter(d => d[estado.vista] === estado.valor);
 }
@@ -356,7 +361,7 @@ function pintar() {
   $("cuenta").textContent = plural(filas.length, "fila", "filas");
   $("cuerpo").innerHTML = filas.length
     ? filas.slice(0, estado.visibles).map(d => "<tr>" + cols.map(c => celda(c, d)).join("") + "</tr>").join("")
-    : `<tr><td class="vacio" colspan="${cols.length}">${estado.vista === "fecha" && !filasDeLaVista().length ? "No hay datos para esta fecha." : "Ninguna fila cumple los filtros."}</td></tr>`;
+    : `<tr><td class="vacio" colspan="${cols.length}">${estado.vista === "fecha" && !filasDeLaVista().length ? (estado.desde === estado.hasta ? "No hay datos para esta fecha." : "No hay datos para estas fechas.") : "Ninguna fila cumple los filtros."}</td></tr>`;
   $("mas").hidden = filas.length <= estado.visibles;
   $("nota").textContent = filas.length > estado.visibles
     ? `Se muestran ${estado.visibles.toLocaleString("es-DO")} de ${filas.length.toLocaleString("es-DO")} filas. El Excel incluye todas.` : "";
@@ -366,7 +371,7 @@ const repintar = () => { estado.visibles = PASO; pintar(); };
 
 function ponerVista(id) {
   estado.vista = id; estado.valor = ""; estado.filtros = {};
-  if (id === "fecha") { estado.valor = ultimo; estado.orden = { col: "estacion", dir: 1 }; ponerFechaElegida(ultimo); }
+  if (id === "fecha") { estado.desde = estado.hasta = ultimo; estado.orden = { col: "estacion", dir: 1 }; ponerFechaElegida("ed", ultimo); ponerFechaElegida("eh", ultimo); }
   else estado.orden = { col: "fecha", dir: -1 };
   $("elegir-fecha").hidden = id !== "fecha";
   document.querySelectorAll("#vistas button").forEach(b => b.classList.toggle("activa", b.dataset.vista === id));
@@ -379,15 +384,20 @@ function ponerVista(id) {
   cerrarMenu(); repintar();
 }
 
-function ponerFechaElegida(f) {
+function ponerFechaElegida(p, f) {
   const [a, m, d] = f.split("-").map(Number);
-  $("ef-a").value = a; $("ef-m").value = m; $("ef-d").value = d;
+  $(p + "-a").value = a; $(p + "-m").value = m; $(p + "-d").value = d;
 }
-function leerFechaElegida() {
-  const a = Number($("ef-a").value), m = Number($("ef-m").value);
-  const d = Math.min(Number($("ef-d").value), finDeMes(a, m));
-  $("ef-d").value = d;
+function leerFechaElegida(p) {
+  const a = Number($(p + "-a").value), m = Number($(p + "-m").value);
+  const d = Math.min(Number($(p + "-d").value), finDeMes(a, m));
+  $(p + "-d").value = d;
   return iso(a, m, d);
+}
+function cambiarRango() {
+  let desde = leerFechaElegida("ed"), hasta = leerFechaElegida("eh");
+  if (desde > hasta) { [desde, hasta] = [hasta, desde]; ponerFechaElegida("ed", desde); ponerFechaElegida("eh", hasta); }
+  estado.desde = desde; estado.hasta = hasta; estado.filtros = {}; cerrarMenu(); repintar();
 }
 
 /* ---------- menú de filtro de cada columna ---------- */
@@ -604,11 +614,13 @@ async function iniciar() {
   }
   $("vistas").innerHTML = VISTAS.map(v => `<button data-vista="${v.id}">${v.nombre}</button>`).join("");
   $("vistas").onclick = e => { const b = e.target.closest("button"); if (b) ponerVista(b.dataset.vista); };
-  for (let d = 1; d <= 31; d++) $("ef-d").insertAdjacentHTML("beforeend", `<option value="${d}">${d}</option>`);
-  MESES.forEach((n, i) => $("ef-m").insertAdjacentHTML("beforeend", `<option value="${i + 1}">${n}</option>`));
   const anos = [...new Set(datos.map(d => Number(d.fecha.slice(0, 4))))].sort();
-  for (const a of anos) $("ef-a").insertAdjacentHTML("beforeend", `<option value="${a}">${a}</option>`);
-  for (const id of ["ef-d", "ef-m", "ef-a"]) $(id).onchange = () => { estado.valor = leerFechaElegida(); estado.filtros = {}; cerrarMenu(); repintar(); };
+  for (const p of ["ed", "eh"]) {
+    for (let d = 1; d <= 31; d++) $(p + "-d").insertAdjacentHTML("beforeend", `<option value="${d}">${d}</option>`);
+    MESES.forEach((n, i) => $(p + "-m").insertAdjacentHTML("beforeend", `<option value="${i + 1}">${n}</option>`));
+    for (const a of anos) $(p + "-a").insertAdjacentHTML("beforeend", `<option value="${a}">${a}</option>`);
+    for (const s of ["d", "m", "a"]) $(p + "-" + s).onchange = cambiarRango;
+  }
   $("elegir").onchange = e => { estado.valor = e.target.value; estado.filtros = {}; cerrarMenu(); repintar(); };
   $("cabeza").onclick = e => {
     const b = e.target.closest("button");

@@ -5,10 +5,11 @@ name: Recolección diaria
 
 on:
   schedule:
-    - cron: "7 16 * * *" # 12:07 p. m. RD
+    - cron: "7 16 * * *" # 12:07 p. m. RD, con revisión de atraso
     - cron: "7 20 * * *" # 4:07 p. m. RD
     - cron: "7 0 * * *"  # 8:07 p. m. RD
-    - cron: "7 4 * * *"  # 12:07 a. m. RD, con revisión de atraso
+    - cron: "7 4 * * *"  # 12:07 a. m. RD
+    # Si el informe de ayer ya está guardado, las corridas programadas terminan enseguida.
   push:
     branches: [main]
     paths: ["sitio/**", "recolector/**", ".github/workflows/**"]
@@ -37,17 +38,32 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: ¿Ya está el informe de ayer?
+        id: ya
+        run: |
+          # 25 horas atrás: así la corrida de medianoche busca el mismo informe que las de la tarde.
+          ayer=$(TZ=America/Santo_Domingo date -d '-25 hours' +%Y-%m-%d)
+          ultimo=$(python3 -c "import json; print(json.load(open('data/estado.json'))['ultimo_dia'])")
+          if [ "${{ github.event_name }}" = "schedule" ] && [[ ! "$ultimo" < "$ayer" ]]; then
+            echo "listo=si" >> "$GITHUB_OUTPUT"; echo "El informe de $ayer ya está guardado. Nada que hacer."
+          else
+            echo "listo=no" >> "$GITHUB_OUTPUT"; echo "Último día guardado: $ultimo. Hay que revisar INDOMET."
+          fi
+
       - uses: actions/setup-python@v7
+        if: steps.ya.outputs.listo == 'no'
         with:
           python-version: "3.12"
 
       - run: pip install pypdf==6.16.2
+        if: steps.ya.outputs.listo == 'no'
 
       - name: Recolectar informes
         id: recolectar
+        if: steps.ya.outputs.listo == 'no'
         run: |
           set +e
-          if [ "${{ github.event.schedule }}" = "7 4 * * *" ]; then
+          if [ "${{ github.event.schedule }}" = "7 16 * * *" ]; then
             python recolector/recolectar.py --revisar-atraso
           else
             python recolector/recolectar.py
@@ -55,6 +71,7 @@ jobs:
           echo "codigo=$?" >> "$GITHUB_OUTPUT"
 
       - name: Guardar datos
+        if: steps.ya.outputs.listo == 'no'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -63,15 +80,19 @@ jobs:
           git push
 
       - name: Preparar página
+        if: steps.ya.outputs.listo == 'no'
         run: |
           mkdir -p _site
           cp sitio/index.html data/observaciones.csv data/estado.json _site/
 
       - uses: actions/configure-pages@v6
+        if: steps.ya.outputs.listo == 'no'
       - uses: actions/upload-pages-artifact@v5
+        if: steps.ya.outputs.listo == 'no'
         with:
           path: _site
       - id: publicar
+        if: steps.ya.outputs.listo == 'no'
         uses: actions/deploy-pages@v5
 
       - name: Prueba de aviso
@@ -81,7 +102,7 @@ jobs:
           exit 1
 
       - name: Avisar si algo falló
-        if: steps.recolectar.outputs.codigo != '0'
+        if: steps.recolectar.outputs.codigo != '' && steps.recolectar.outputs.codigo != '0'
         run: |
           echo "El recolector encontró un problema. Revise el paso 'Recolectar informes'."
           exit 1
