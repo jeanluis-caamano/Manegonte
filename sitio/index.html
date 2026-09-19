@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ManEGonTe · Temperaturas y lluvias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff; --alt: #f7f8f7; --ink: #17181a; --mid: #5c6165; --dim: #8a8f93;
+    --line: #e4e6e3; --line-2: #eef0ee; --accent: #0b6b47; --accent-soft: #f0f6f3;
+    --do-blue: #002d62; --do-red: #ce1126; --warn: #9a3412; --lluvia-suave: #eaf0f7;
+    --sans: "Libre Franklin", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --pad: clamp(18px, 4vw, 44px); --maxw: 1400px; --r: 6px;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans);
+         font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  button, select, input { font: inherit; color: var(--ink); }
+
+  /* encabezado, igual que la maqueta de ManEGonTe */
+  .hdr { border-bottom: 1px solid var(--line); background: #fff; }
+  .hdr-top { max-width: var(--maxw); margin: 0 auto; padding: 20px var(--pad) 16px; display: flex; align-items: center; gap: 20px; }
+  .wordmark { font-size: clamp(24px, 3.6vw, 32px); font-weight: 700; letter-spacing: -.02em; line-height: 1; display: block; }
+  .wordmark span.b { color: var(--do-blue); }
+  .wordmark span.r { color: var(--do-red); }
+  .wordmark span.w { color: #fff; -webkit-text-stroke: .8px #b7bcc0; text-shadow: 0 0 0 #fff; }
+  .subline { display: block; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-top: 7px; }
+
+  main { max-width: var(--maxw); margin: 0 auto; padding: clamp(24px, 4vw, 40px) var(--pad) 56px; }
+  h1 { font-size: clamp(22px, 2.8vw, 30px); font-weight: 600; letter-spacing: -.019em; line-height: 1.2; margin: 0 0 6px; }
+  .sub { font-size: 14px; color: var(--dim); margin: 0; font-variant-numeric: tabular-nums; }
+
+  button { padding: 7px 14px; border-radius: var(--r); border: 1px solid var(--line); background: #fff; cursor: pointer; font-size: 15px; }
+  button:hover:not(:disabled) { border-color: #c9cdc9; }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button:disabled { opacity: .45; cursor: default; }
+  select, input[type=search], input[type=number] {
+    padding: 7px 10px; border: 1px solid var(--line); border-radius: var(--r); background: #fff; font-size: 15px; }
+  input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; flex: none; }
+  .fila { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+
+  .vistas-barra { margin-top: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .vistas { gap: 6px; }
+  .vistas button { border-radius: 100px; padding: 6px 14px; color: var(--mid); }
+  .vistas button:hover { color: var(--ink); }
+  .vistas button.activa { background: var(--ink); border-color: var(--ink); color: #fff; font-weight: 600; }
+
+  .barra { justify-content: space-between; margin: 18px 0 12px; }
+  .cuenta { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+  button.principal { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  button.principal:hover:not(:disabled) { background: #095637; border-color: #095637; }
+
+  .hoja { border: 1px solid var(--line); border-radius: var(--r); overflow-x: auto; background: #fff; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { padding: 9px 12px; border-bottom: 1px solid var(--line-2); text-align: left; vertical-align: top; }
+  th { background: var(--alt); white-space: nowrap; position: sticky; top: 0; z-index: 1; border-bottom: 1px solid var(--line);
+       font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover td { background: var(--alt); }
+  td.fecha, td.n { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.n, th.n { text-align: right; }
+  td.calor { color: var(--warn); font-weight: 700; }
+  td.lluvia { background-image: linear-gradient(90deg, transparent calc(100% - var(--p)), var(--lluvia-suave) calc(100% - var(--p))); }
+  td.lluvia.hay { font-weight: 600; color: var(--do-blue); }
+  .cab { display: inline-flex; align-items: center; gap: 4px; }
+  .cab .ordenar { border: 0; background: none; padding: 2px; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; }
+  .cab .filtro { padding: 0 6px; line-height: 1.5; font-size: 11px; }
+  .cab .filtro.activo { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .vacio { padding: 30px; text-align: center; color: var(--mid); font-size: 15px; }
+  .pie { margin-top: 14px; }
+  .nota { color: var(--dim); font-size: 13px; }
+  #error { color: var(--warn); font-weight: 600; }
+
+  footer { border-top: 1px solid var(--line); background: var(--alt); margin-top: 24px; }
+  footer .dentro { max-width: var(--maxw); margin: 0 auto; padding: 28px var(--pad); }
+  footer .wordmark { font-size: 22px; margin-bottom: 10px; }
+  .fuente { font-family: var(--serif); font-size: 15px; color: var(--mid); margin: 0; max-width: 70ch; }
+
+  .menu { position: absolute; z-index: 10; width: 330px; max-width: calc(100vw - 16px); background: #fff;
+          border: 1px solid var(--line); border-radius: var(--r); box-shadow: 0 10px 30px rgba(23, 24, 26, .12); padding: 8px; font-size: 14.5px; }
+  .menu .opcion { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 7px 10px; font-size: 14.5px; }
+  .menu .opcion:hover:not(:disabled) { background: var(--alt); }
+  .menu hr { border: 0; border-top: 1px solid var(--line-2); margin: 6px 0; }
+  .menu .sub-opciones { padding-left: 12px; }
+  .menu .form { padding: 6px 8px; display: grid; gap: 8px; }
+  .menu .form .fila { gap: 6px; }
+  .menu .form select, .menu .form input { padding: 5px 8px; }
+  .menu .form input[type=number] { width: 110px; }
+  .menu .buscar { width: 100%; margin: 6px 0; }
+  .menu .lista { max-height: 260px; overflow: auto; border: 1px solid var(--line); border-radius: var(--r); padding: 6px 8px; }
+  .menu .lista label { display: flex; gap: 8px; align-items: center; padding: 3px 0; }
+  .menu .nodo > .hijos { padding-left: 22px; }
+  .menu .nodo .abrir { border: 0; background: none; padding: 0 4px; width: 22px; }
+  .menu .nodo .linea { display: flex; align-items: center; }
+  .menu .actual { color: var(--dim); padding: 2px 8px 6px; }
+  .menu .acciones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-top">
+    <div class="logo">
+      <span class="wordmark"><span class="b">M</span><span class="r">a</span><span class="w">n</span><span class="b">E</span><span class="r">G</span><span class="w">o</span><span class="b">n</span><span class="r">T</span><span class="w">e</span></span>
+      <span class="subline">Agricultura. Clima. Seguridad Alimentaria.</span>
+    </div>
+  </div>
+</header>
+<main>
+  <h1>Temperaturas extremas y precipitaciones</h1>
+  <p class="sub" id="estado">Cargando datos…</p>
+
+  <div class="fila vistas-barra">
+    <div class="fila vistas" id="vistas"></div>
+    <select id="elegir" hidden></select>
+    <span class="fila" id="elegir-fecha" hidden style="gap: 6px;">
+      <select id="ef-d" aria-label="Día"></select><select id="ef-m" aria-label="Mes"></select><select id="ef-a" aria-label="Año"></select>
+    </span>
+  </div>
+
+  <div class="fila barra">
+    <span class="cuenta" id="cuenta"></span>
+    <div class="fila">
+      <button id="esconder">Esconder Columnas</button>
+      <button class="principal" id="descargar">Descargar Excel</button>
+    </div>
+  </div>
+  <p id="error"></p>
+
+  <div class="hoja"><table><thead id="cabeza"></thead><tbody id="cuerpo"></tbody></table></div>
+  <div class="fila pie">
+    <button id="mas">Mostrar 100 filas más</button>
+    <span class="nota" id="nota"></span>
+  </div>
+
+</main>
+<footer>
+  <div class="dentro">
+    <span class="wordmark"><span class="b">M</span><span class="r">a</span><span class="w">n</span><span class="b">E</span><span class="r">G</span><span class="w">o</span><span class="b">n</span><span class="r">T</span><span class="w">e</span></span>
+    <p class="fuente">Fuente: Instituto Dominicano de Meteorología (INDOMET), informes diarios publicados en indomet.gob.do.
+    Una casilla vacía significa que la estación no reportó ese dato.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+const COLUMNAS = [
+  { id: "fecha", nombre: "Fecha", tipo: "fecha" },
+  { id: "estacion", nombre: "Estación", tipo: "texto" },
+  { id: "provincia", nombre: "Provincia", tipo: "texto" },
+  { id: "localidad", nombre: "Localidad", tipo: "texto" },
+  { id: "tipo", nombre: "Tipo", tipo: "texto" },
+  { id: "tmax", nombre: "T. máx. (°C)", tipo: "numero" },
+  { id: "tmin", nombre: "T. mín. (°C)", tipo: "numero" },
+  { id: "lluvia", nombre: "Lluvia (mm)", tipo: "numero" },
+];
+const COL = Object.fromEntries(COLUMNAS.map(c => [c.id, c]));
+const VISTAS = [
+  { id: "fecha", nombre: "Por fecha" },
+  { id: "estacion", nombre: "Por estación", elegir: "Elija una estación" },
+  { id: "provincia", nombre: "Por provincia", elegir: "Elija una provincia" },
+  { id: "localidad", nombre: "Por localidad", elegir: "Elija una localidad" },
+];
+const FILTROS_FECHA = [
+  ["eq", "Es igual a…"], ["antes", "Antes de…"], ["despues", "Después de…"], ["entre", "Entre…"], null,
+  ["hoy", "Hoy"], ["ayer", "Ayer"], null,
+  ["estaSemana", "Esta semana"], ["semanaPasada", "La semana pasada"], null,
+  ["esteMes", "Este mes"], ["mesPasado", "El mes pasado"], null,
+  ["esteTrimestre", "Este trimestre"], ["trimestrePasado", "El trimestre pasado"], null,
+  ["esteAno", "Este año"], ["anoPasado", "El año pasado"], ["hastaLaFecha", "Hasta la fecha"],
+];
+const FILTROS_NUMERO = [
+  ["eq", "Es igual a…"], ["ne", "No es igual a…"], ["gt", "Mayor que…"], ["ge", "Mayor o igual que…"],
+  ["lt", "Menor que…"], ["le", "Menor o igual que…"], ["entre", "Entre…"], null,
+  ["top", "Diez mejores…"], ["sobre", "Por encima del promedio"], ["bajo", "Por debajo del promedio"],
+];
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const VACIAS = "(Vacías)";
+const PASO = 100;
+const $ = id => document.getElementById(id);
+
+let datos = [], ultimo = "";
+const estado = { vista: "fecha", valor: "", filtros: {}, orden: { col: "estacion", dir: 1 }, ocultas: new Set(), visibles: PASO };
+
+/* ---------- utilidades ---------- */
+function leerCSV(texto) {
+  const filas = [];
+  let campo = "", fila = [], comillas = false;
+  for (let i = 0; i < texto.length; i++) {
+    const c = texto[i];
+    if (comillas) {
+      if (c === '"' && texto[i + 1] === '"') { campo += '"'; i++; }
+      else if (c === '"') comillas = false;
+      else campo += c;
+    } else if (c === '"') comillas = true;
+    else if (c === ",") { fila.push(campo); campo = ""; }
+    else if (c === "\n") { fila.push(campo.replace(/\r$/, "")); filas.push(fila); fila = []; campo = ""; }
+    else campo += c;
+  }
+  if (campo || fila.length) { fila.push(campo); filas.push(fila); }
+  const cab = filas.shift();
+  return filas.filter(f => f.length === cab.length).map(f => Object.fromEntries(cab.map((c, i) => [c, f[i]])));
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const iso = (a, m, d) => `${a}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+const fechaBonita = f => f.split("-").reverse().join("/");
+const sumarDias = (f, n) => { const d = new Date(f + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+const finDeMes = (a, m) => new Date(Date.UTC(a, m, 0)).getUTCDate();
+const serialExcel = f => Math.round((Date.parse(f + "T00:00:00Z") - Date.UTC(1899, 11, 30)) / 86400000);
+const hoy = () => { const d = new Date(); return iso(d.getFullYear(), d.getMonth() + 1, d.getDate()); };
+const plural = (n, uno, varios) => `${n.toLocaleString("es-DO")} ${n === 1 ? uno : varios}`;
+
+function texto(col, d) {
+  const v = d[col];
+  if (COL[col].tipo === "fecha") return fechaBonita(v);
+  if (COL[col].tipo === "numero") return v === null ? "" : v.toFixed(1);
+  return v;
+}
+function clave(col, d) {
+  const v = d[col];
+  if (COL[col].tipo === "numero") return v === null ? VACIAS : v.toFixed(1);
+  return v === "" ? VACIAS : v;
+}
+
+/* ---------- filtros ---------- */
+function rangoFecha(op, a, b) {
+  const h = hoy(), [ha, hm] = h.split("-").map(Number);
+  const dia = new Date(h + "T12:00:00Z").getUTCDay(); // la semana empieza el domingo, como en Excel
+  const trimestre = (a2, t) => [iso(a2, t * 3 + 1, 1), iso(a2, t * 3 + 3, finDeMes(a2, t * 3 + 3))];
+  const tActual = Math.floor((hm - 1) / 3);
+  switch (op) {
+    case "eq": return [a, a];
+    case "antes": return ["0000-01-01", sumarDias(a, -1)];
+    case "despues": return [sumarDias(a, 1), "9999-12-31"];
+    case "entre": return a <= b ? [a, b] : [b, a];
+    case "hoy": return [h, h];
+    case "ayer": return [sumarDias(h, -1), sumarDias(h, -1)];
+    case "estaSemana": return [sumarDias(h, -dia), sumarDias(h, 6 - dia)];
+    case "semanaPasada": return [sumarDias(h, -dia - 7), sumarDias(h, -dia - 1)];
+    case "esteMes": return [iso(ha, hm, 1), iso(ha, hm, finDeMes(ha, hm))];
+    case "mesPasado": { const pa = hm === 1 ? ha - 1 : ha, pm = hm === 1 ? 12 : hm - 1; return [iso(pa, pm, 1), iso(pa, pm, finDeMes(pa, pm))]; }
+    case "esteTrimestre": return trimestre(ha, tActual);
+    case "trimestrePasado": return tActual === 0 ? trimestre(ha - 1, 3) : trimestre(ha, tActual - 1);
+    case "esteAno": return [iso(ha, 1, 1), iso(ha, 12, 31)];
+    case "anoPasado": return [iso(ha - 1, 1, 1), iso(ha - 1, 12, 31)];
+    case "hastaLaFecha": return [iso(ha, 1, 1), h];
+  }
+}
+
+function filasDeLaVista() {
+  if (estado.vista === "fecha") return datos.filter(d => d.fecha === estado.valor);
+  if (!estado.valor) return [];
+  return datos.filter(d => d[estado.vista] === estado.valor);
+}
+
+function prepararCondiciones(base) {
+  const prep = {};
+  for (const [col, f] of Object.entries(estado.filtros)) {
+    if (!f.cond) continue;
+    const c = f.cond;
+    if (COL[col].tipo === "fecha") prep[col] = rangoFecha(c.op, c.a, c.b);
+    else if (["top", "sobre", "bajo"].includes(c.op)) {
+      const vals = base.map(d => d[col]).filter(v => v !== null);
+      if (c.op === "top") {
+        vals.sort((x, y) => c.lado === "sup" ? y - x : x - y);
+        prep[col] = vals.length ? vals[Math.min(c.n, vals.length) - 1] : null;
+      } else prep[col] = vals.length ? vals.reduce((s, v) => s + v, 0) / vals.length : null;
+    }
+  }
+  return prep;
+}
+
+function pasa(col, d, prep) {
+  const f = estado.filtros[col];
+  if (!f) return true;
+  if (f.valores) return f.valores.has(clave(col, d));
+  const c = f.cond, v = d[col];
+  if (COL[col].tipo === "fecha") { const [i, fin] = prep[col]; return v >= i && v <= fin; }
+  if (v === null) return c.op === "ne";
+  switch (c.op) {
+    case "eq": return v === c.a;
+    case "ne": return v !== c.a;
+    case "gt": return v > c.a;
+    case "ge": return v >= c.a;
+    case "lt": return v < c.a;
+    case "le": return v <= c.a;
+    case "entre": return v >= Math.min(c.a, c.b) && v <= Math.max(c.a, c.b);
+    case "top": return prep[col] !== null && (c.lado === "sup" ? v >= prep[col] : v <= prep[col]);
+    case "sobre": return prep[col] !== null && v > prep[col];
+    case "bajo": return prep[col] !== null && v < prep[col];
+  }
+  return true;
+}
+
+function filtrar(excepto) {
+  const base = filasDeLaVista(), prep = prepararCondiciones(base);
+  return base.filter(d => COLUMNAS.every(c => c.id === excepto || pasa(c.id, d, prep)));
+}
+
+function comparar(col, a, b) {
+  const x = a[col], y = b[col];
+  if (COL[col].tipo === "numero") {
+    if (x === null || y === null) return x === y ? 0 : x === null ? 1 : -1;
+    return x - y;
+  }
+  return String(x).localeCompare(String(y), "es");
+}
+function ordenar(filas) {
+  const { col, dir } = estado.orden;
+  return filas.slice().sort((a, b) => {
+    const nulo = COL[col].tipo === "numero" && (a[col] === null) !== (b[col] === null);
+    const r = nulo ? comparar(col, a, b) : dir * comparar(col, a, b); // vacías siempre al final, como en Excel
+    return r || b.fecha.localeCompare(a.fecha) || a.estacion.localeCompare(b.estacion, "es");
+  });
+}
+const resultado = () => ordenar(filtrar());
+const columnasVisibles = () => COLUMNAS.filter(c => !estado.ocultas.has(c.id));
+
+/* ---------- tabla ---------- */
+const CALOR = 35; // °C: máximas desde aquí se resaltan
+const LLUVIA_TOPE = 50; // mm: la barrita de lluvia llega al ancho completo aquí
+function celda(c, d) {
+  const v = d[c.id];
+  let clase = c.tipo === "numero" ? "n" : c.tipo === "fecha" ? "fecha" : "", estilo = "";
+  if (c.id === "tmax" && v !== null && v >= CALOR) clase += " calor";
+  if (c.id === "lluvia" && v !== null) {
+    clase += " lluvia" + (v > 0 ? " hay" : "");
+    estilo = ` style="--p:${Math.min(100, v / LLUVIA_TOPE * 100).toFixed(0)}%"`;
+  }
+  return `<td class="${clase}"${estilo}>${esc(texto(c.id, d))}</td>`;
+}
+function pintar() {
+  const cols = columnasVisibles();
+  const vista = VISTAS.find(v => v.id === estado.vista);
+  $("cabeza").innerHTML = "<tr>" + cols.map(c => {
+    const flecha = estado.orden.col === c.id ? (estado.orden.dir === 1 ? " ↑" : " ↓") : "";
+    return `<th class="${c.tipo === "numero" ? "n" : ""}"><span class="cab">
+      <button class="ordenar" data-col="${c.id}" title="Ordenar">${c.nombre}${flecha}</button>
+      <button class="filtro ${estado.filtros[c.id] ? "activo" : ""}" data-col="${c.id}" title="Filtrar">▾</button></span></th>`;
+  }).join("") + "</tr>";
+
+  if (vista.elegir && !estado.valor) {
+    $("cuerpo").innerHTML = `<tr><td class="vacio" colspan="${cols.length}">${vista.elegir} arriba.</td></tr>`;
+    $("cuenta").textContent = ""; $("mas").hidden = true; $("nota").textContent = ""; $("descargar").disabled = true;
+    return;
+  }
+  const filas = resultado();
+  $("cuenta").textContent = plural(filas.length, "fila", "filas");
+  $("cuerpo").innerHTML = filas.length
+    ? filas.slice(0, estado.visibles).map(d => "<tr>" + cols.map(c => celda(c, d)).join("") + "</tr>").join("")
+    : `<tr><td class="vacio" colspan="${cols.length}">${estado.vista === "fecha" && !filasDeLaVista().length ? "No hay datos para esta fecha." : "Ninguna fila cumple los filtros."}</td></tr>`;
+  $("mas").hidden = filas.length <= estado.visibles;
+  $("nota").textContent = filas.length > estado.visibles
+    ? `Se muestran ${estado.visibles.toLocaleString("es-DO")} de ${filas.length.toLocaleString("es-DO")} filas. El Excel incluye todas.` : "";
+  $("descargar").disabled = filas.length === 0 || cols.length === 0;
+}
+const repintar = () => { estado.visibles = PASO; pintar(); };
+
+function ponerVista(id) {
+  estado.vista = id; estado.valor = ""; estado.filtros = {};
+  if (id === "fecha") { estado.valor = ultimo; estado.orden = { col: "estacion", dir: 1 }; ponerFechaElegida(ultimo); }
+  else estado.orden = { col: "fecha", dir: -1 };
+  $("elegir-fecha").hidden = id !== "fecha";
+  document.querySelectorAll("#vistas button").forEach(b => b.classList.toggle("activa", b.dataset.vista === id));
+  const vista = VISTAS.find(v => v.id === id), sel = $("elegir");
+  sel.hidden = !vista.elegir;
+  if (vista.elegir) {
+    const valores = [...new Set(datos.map(d => d[id]).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es"));
+    sel.innerHTML = `<option value="">${vista.elegir}…</option>` + valores.map(v => `<option>${esc(v)}</option>`).join("");
+  }
+  cerrarMenu(); repintar();
+}
+
+function ponerFechaElegida(f) {
+  const [a, m, d] = f.split("-").map(Number);
+  $("ef-a").value = a; $("ef-m").value = m; $("ef-d").value = d;
+}
+function leerFechaElegida() {
+  const a = Number($("ef-a").value), m = Number($("ef-m").value);
+  const d = Math.min(Number($("ef-d").value), finDeMes(a, m));
+  $("ef-d").value = d;
+  return iso(a, m, d);
+}
+
+/* ---------- menú de filtro de cada columna ---------- */
+let menuAbierto = null;
+function cerrarMenu() { if (menuAbierto) { menuAbierto.remove(); menuAbierto = null; } }
+function colocar(menu, ancla) {
+  document.body.appendChild(menu);
+  const r = ancla.getBoundingClientRect();
+  const izq = Math.min(r.left + scrollX, scrollX + document.documentElement.clientWidth - menu.offsetWidth - 8);
+  menu.style.left = Math.max(8, izq) + "px"; menu.style.top = (r.bottom + scrollY + 4) + "px";
+  menuAbierto = menu;
+}
+function selectorFecha(pref, valor) {
+  const [a, m, d] = (valor || ultimo).split("-").map(Number);
+  const anos = [...new Set(datos.map(x => Number(x.fecha.slice(0, 4))))].sort();
+  return `<div class="fila">
+    <select data-p="${pref}-d">${Array.from({ length: 31 }, (_, i) => `<option ${i + 1 === d ? "selected" : ""}>${i + 1}</option>`).join("")}</select>
+    <select data-p="${pref}-m">${MESES.map((n, i) => `<option value="${i + 1}" ${i + 1 === m ? "selected" : ""}>${n}</option>`).join("")}</select>
+    <select data-p="${pref}-a">${anos.map(x => `<option ${x === a ? "selected" : ""}>${x}</option>`).join("")}</select></div>`;
+}
+function leerSelector(menu, pref) {
+  const v = s => Number(menu.querySelector(`[data-p="${pref}-${s}"]`).value);
+  const a = v("a"), m = v("m");
+  return iso(a, m, Math.min(v("d"), finDeMes(a, m)));
+}
+function describir(col, c) {
+  const lista = COL[col].tipo === "fecha" ? FILTROS_FECHA : FILTROS_NUMERO;
+  const nombre = lista.find(x => x && x[0] === c.op)[1].replace("…", "");
+  const f = v => COL[col].tipo === "fecha" ? fechaBonita(v) : v;
+  if (c.op === "entre") return `${nombre} ${f(c.a)} y ${f(c.b)}`;
+  if (c.op === "top") return `${c.lado === "sup" ? "Superiores" : "Inferiores"} ${c.n}`;
+  return c.a !== undefined ? `${nombre} ${f(c.a)}` : nombre;
+}
+
+function abrirMenu(col, boton) {
+  if (menuAbierto && menuAbierto.dataset.col === col) { cerrarMenu(); return; }
+  cerrarMenu();
+  const c = COL[col], f = estado.filtros[col];
+  const m = document.createElement("div");
+  m.className = "menu"; m.dataset.col = col;
+  const [asc, desc] = c.tipo === "fecha" ? ["Ordenar de más antiguo a más reciente", "Ordenar de más reciente a más antiguo"]
+    : c.tipo === "numero" ? ["Ordenar de menor a mayor", "Ordenar de mayor a menor"] : ["Ordenar de A a Z", "Ordenar de Z a A"];
+  let html = `<button class="opcion" data-accion="asc">${asc}</button><button class="opcion" data-accion="desc">${desc}</button><hr>
+    <button class="opcion" data-accion="borrar" ${f ? "" : "disabled"}>Borrar filtro de "${c.nombre}"</button>`;
+  if (c.tipo !== "texto") {
+    const lista = c.tipo === "fecha" ? FILTROS_FECHA : FILTROS_NUMERO;
+    html += `<button class="opcion" data-accion="condiciones">${c.tipo === "fecha" ? "Filtros de fecha" : "Filtros de número"} ▸</button>
+      <div class="sub-opciones" hidden>${lista.map(x => x ? `<button class="opcion" data-op="${x[0]}">${x[1]}</button>` : "<hr>").join("")}</div>
+      <div class="form" hidden></div>`;
+    if (f && f.cond) html += `<div class="actual">Filtro actual: ${esc(describir(col, f.cond))}</div>`;
+  }
+  html += `<hr><input type="search" class="buscar" placeholder="Buscar"><div class="lista"></div>
+    <div class="acciones"><button data-accion="cancelar">Cancelar</button><button class="principal" data-accion="aceptar">Aceptar</button></div>`;
+  m.innerHTML = html;
+
+  // Lista de valores: los que quedan con los demás filtros aplicados, como en Excel.
+  const disponibles = [...new Set(filtrar(col).map(d => clave(col, d)))];
+  disponibles.sort((a, b) => {
+    if (a === VACIAS || b === VACIAS) return a === b ? 0 : a === VACIAS ? 1 : -1;
+    return c.tipo === "numero" ? Number(a) - Number(b) : c.tipo === "fecha" ? b.localeCompare(a) : a.localeCompare(b, "es");
+  });
+  const marcados = new Set(f && f.valores ? disponibles.filter(v => f.valores.has(v)) : disponibles);
+  const lista = m.querySelector(".lista"), buscar = m.querySelector(".buscar");
+  const etiqueta = v => v === VACIAS ? VACIAS : c.tipo === "fecha" ? fechaBonita(v) : v;
+
+  function pintarLista() {
+    const q = buscar.value.trim().toLowerCase();
+    const vis = disponibles.filter(v => !q || etiqueta(v).toLowerCase().includes(q) || (c.tipo === "fecha" && v !== VACIAS && MESES[Number(v.slice(5, 7)) - 1].includes(q)));
+    const todos = vis.length > 0 && vis.every(v => marcados.has(v));
+    let h = `<label><input type="checkbox" data-todo ${todos ? "checked" : ""}> ${q ? "(Seleccionar todos los resultados de la búsqueda)" : "(Seleccionar todo)"}</label>`;
+    if (c.tipo === "fecha" && !q) {
+      const arbol = {};
+      for (const v of vis) { const [a, mm] = v.split("-"); ((arbol[a] ??= {})[mm] ??= []).push(v); }
+      for (const a of Object.keys(arbol).sort().reverse()) {
+        h += `<div class="nodo"><div class="linea"><button class="abrir">+</button><label><input type="checkbox" data-grupo="${a}"> ${a}</label></div><div class="hijos" hidden>`;
+        for (const mm of Object.keys(arbol[a]).sort().reverse()) {
+          h += `<div class="nodo"><div class="linea"><button class="abrir">+</button><label><input type="checkbox" data-grupo="${a}-${mm}"> ${MESES[Number(mm) - 1]}</label></div><div class="hijos" hidden>`;
+          h += arbol[a][mm].map(v => `<label><input type="checkbox" data-v="${v}" ${marcados.has(v) ? "checked" : ""}> ${Number(v.slice(8))}</label>`).join("");
+          h += "</div></div>";
+        }
+        h += "</div></div>";
+      }
+    } else h += vis.map(v => `<label><input type="checkbox" data-v="${esc(v)}" ${marcados.has(v) ? "checked" : ""}> ${esc(etiqueta(v))}</label>`).join("");
+    lista.innerHTML = h;
+    lista.dataset.vis = JSON.stringify(vis);
+    sincronizarGrupos();
+  }
+  function sincronizarGrupos() {
+    lista.querySelectorAll("[data-grupo]").forEach(g => {
+      const hijos = [...lista.querySelectorAll("[data-v]")].filter(i => i.dataset.v.startsWith(g.dataset.grupo));
+      const n = hijos.filter(i => i.checked).length;
+      g.checked = n === hijos.length; g.indeterminate = n > 0 && n < hijos.length;
+    });
+    const vis = JSON.parse(lista.dataset.vis), todo = lista.querySelector("[data-todo]");
+    const n = vis.filter(v => marcados.has(v)).length;
+    todo.checked = vis.length > 0 && n === vis.length; todo.indeterminate = n > 0 && n < vis.length;
+  }
+  lista.addEventListener("change", e => {
+    const i = e.target;
+    if (i.dataset.todo !== undefined) JSON.parse(lista.dataset.vis).forEach(v => i.checked ? marcados.add(v) : marcados.delete(v));
+    else if (i.dataset.grupo) disponibles.filter(v => v.startsWith(i.dataset.grupo)).forEach(v => i.checked ? marcados.add(v) : marcados.delete(v));
+    else if (i.dataset.v) i.checked ? marcados.add(i.dataset.v) : marcados.delete(i.dataset.v);
+    lista.querySelectorAll("[data-v]").forEach(x => x.checked = marcados.has(x.dataset.v));
+    sincronizarGrupos();
+  });
+  lista.addEventListener("click", e => {
+    if (!e.target.classList.contains("abrir")) return;
+    const hijos = e.target.closest(".nodo").querySelector(".hijos");
+    hijos.hidden = !hijos.hidden; e.target.textContent = hijos.hidden ? "+" : "−";
+  });
+  buscar.addEventListener("input", pintarLista);
+
+  // Filtros de fecha / número
+  const form = m.querySelector(".form");
+  function pedirCondicion(op) {
+    if (c.tipo === "fecha" && !["eq", "antes", "despues", "entre"].includes(op)) { aplicar({ cond: { op } }); return; }
+    if (c.tipo === "numero" && ["sobre", "bajo"].includes(op)) { aplicar({ cond: { op } }); return; }
+    const previo = f && f.cond && f.cond.op === op ? f.cond : {};
+    const nombre = (c.tipo === "fecha" ? FILTROS_FECHA : FILTROS_NUMERO).find(x => x && x[0] === op)[1].replace("…", "");
+    let h = `<strong>${nombre}</strong>`;
+    if (op === "top") h += `<div class="fila"><select data-p="lado"><option value="sup">Superiores</option><option value="inf" ${previo.lado === "inf" ? "selected" : ""}>Inferiores</option></select>
+      <input type="number" data-p="n" min="1" step="1" value="${previo.n || 10}"> elementos</div>`;
+    else if (c.tipo === "fecha") h += selectorFecha("a", previo.a) + (op === "entre" ? "y" + selectorFecha("b", previo.b) : "");
+    else h += `<div class="fila"><input type="number" step="0.1" data-p="a" value="${previo.a ?? ""}">${op === "entre" ? ` y <input type="number" step="0.1" data-p="b" value="${previo.b ?? ""}">` : ""}</div>`;
+    h += `<div class="acciones"><button data-accion="aplicar-cond" data-op="${op}" class="principal">Aceptar</button></div>`;
+    form.innerHTML = h; form.hidden = false;
+  }
+  function aplicar(filtro) {
+    if (filtro) estado.filtros[col] = filtro; else delete estado.filtros[col];
+    cerrarMenu(); repintar();
+  }
+  m.addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    const a = b.dataset.accion;
+    if (a === "asc" || a === "desc") { estado.orden = { col, dir: a === "asc" ? 1 : -1 }; cerrarMenu(); repintar(); }
+    else if (a === "borrar") aplicar(null);
+    else if (a === "condiciones") { const s = m.querySelector(".sub-opciones"); s.hidden = !s.hidden; }
+    else if (b.dataset.op && !a) pedirCondicion(b.dataset.op);
+    else if (a === "aplicar-cond") {
+      const op = b.dataset.op, cond = { op };
+      if (op === "top") { cond.lado = form.querySelector('[data-p="lado"]').value; cond.n = Math.max(1, parseInt(form.querySelector('[data-p="n"]').value, 10) || 10); }
+      else if (c.tipo === "fecha") { cond.a = leerSelector(form, "a"); if (op === "entre") cond.b = leerSelector(form, "b"); }
+      else {
+        cond.a = parseFloat(form.querySelector('[data-p="a"]').value);
+        if (op === "entre") cond.b = parseFloat(form.querySelector('[data-p="b"]').value);
+        if (isNaN(cond.a) || (op === "entre" && isNaN(cond.b))) return;
+      }
+      aplicar({ cond });
+    }
+    else if (a === "cancelar") cerrarMenu();
+    else if (a === "aceptar") {
+      const q = buscar.value.trim();
+      const elegidos = q ? new Set(JSON.parse(lista.dataset.vis).filter(v => marcados.has(v))) : new Set(marcados);
+      aplicar(!q && elegidos.size === disponibles.length ? null : { valores: elegidos });
+    }
+  });
+  pintarLista();
+  colocar(m, boton);
+}
+
+function abrirEsconder(boton) {
+  if (menuAbierto && menuAbierto.dataset.col === "_esconder") { cerrarMenu(); return; }
+  cerrarMenu();
+  const m = document.createElement("div");
+  m.className = "menu"; m.dataset.col = "_esconder";
+  m.innerHTML = `<div class="actual">Quite la marca de las columnas que quiere esconder.</div><div class="lista">` +
+    COLUMNAS.map(c => `<label><input type="checkbox" data-c="${c.id}" ${estado.ocultas.has(c.id) ? "" : "checked"}> ${c.nombre}</label>`).join("") + "</div>";
+  m.addEventListener("change", e => {
+    const id = e.target.dataset.c;
+    e.target.checked ? estado.ocultas.delete(id) : estado.ocultas.add(id);
+    pintar();
+  });
+  colocar(m, boton);
+}
+
+/* ---------- Excel ---------- */
+function descargar() {
+  $("error").textContent = "";
+  if (typeof XLSX === "undefined") { $("error").textContent = "No se pudo preparar el Excel. Intente de nuevo en un momento."; return; }
+  const filas = resultado(), cols = columnasVisibles();
+  const hoja = [cols.map(c => c.nombre)];
+  for (const d of filas) hoja.push(cols.map(c => c.tipo === "fecha" ? serialExcel(d.fecha) : c.tipo === "numero" ? d[c.id] : d[c.id]));
+  const ws = XLSX.utils.aoa_to_sheet(hoja);
+  const iFecha = cols.findIndex(c => c.tipo === "fecha");
+  if (iFecha >= 0) for (let r = 1; r < hoja.length; r++) { const celda = ws[XLSX.utils.encode_cell({ r, c: iFecha })]; celda.t = "n"; celda.z = "dd/mm/yyyy"; }
+  ws["!cols"] = cols.map(c => ({ wch: c.tipo === "fecha" ? 12 : c.tipo === "numero" ? 13 : 28 }));
+  ws["!autofilter"] = { ref: XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: hoja.length - 1, c: cols.length - 1 } }) };
+  const libro = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(libro, ws, "Datos");
+  const fechas = filas.map(d => d.fecha).sort();
+  const rango = fechas[0] === fechas.at(-1) ? fechas[0] : `${fechas[0]}_a_${fechas.at(-1)}`;
+  const quien = estado.valor && estado.vista !== "fecha" ? "_" + estado.valor.toLowerCase().replace(/[^a-z0-9áéíóúñ]+/g, "-").replace(/^-|-$/g, "") : "";
+  XLSX.writeFile(libro, `temperaturas${quien}_${rango}.xlsx`);
+}
+
+/* ---------- inicio ---------- */
+async function iniciar() {
+  try {
+    const [csv, est] = await Promise.all([
+      fetch("observaciones.csv", { cache: "no-cache" }).then(r => r.text()),
+      fetch("estado.json", { cache: "no-cache" }).then(r => r.json()),
+    ]);
+    datos = leerCSV(csv).map(d => ({
+      fecha: d.fecha, estacion: d.estacion, provincia: d.provincia, localidad: d.localidad, tipo: d.tipo,
+      tmax: d.tmax === "" ? null : Number(d.tmax), tmin: d.tmin === "" ? null : Number(d.tmin), lluvia: d.lluvia === "" ? null : Number(d.lluvia),
+    }));
+    ultimo = est.ultimo_dia;
+    const [f, h] = est.actualizado.split("T");
+    $("estado").textContent = `Último día con datos: ${fechaBonita(ultimo)}. Revisado por última vez el ${fechaBonita(f)} a las ${h}.`;
+  } catch (e) {
+    $("estado").textContent = "No se pudieron cargar los datos. Intente recargar la página.";
+    return;
+  }
+  $("vistas").innerHTML = VISTAS.map(v => `<button data-vista="${v.id}">${v.nombre}</button>`).join("");
+  $("vistas").onclick = e => { const b = e.target.closest("button"); if (b) ponerVista(b.dataset.vista); };
+  for (let d = 1; d <= 31; d++) $("ef-d").insertAdjacentHTML("beforeend", `<option value="${d}">${d}</option>`);
+  MESES.forEach((n, i) => $("ef-m").insertAdjacentHTML("beforeend", `<option value="${i + 1}">${n}</option>`));
+  const anos = [...new Set(datos.map(d => Number(d.fecha.slice(0, 4))))].sort();
+  for (const a of anos) $("ef-a").insertAdjacentHTML("beforeend", `<option value="${a}">${a}</option>`);
+  for (const id of ["ef-d", "ef-m", "ef-a"]) $(id).onchange = () => { estado.valor = leerFechaElegida(); estado.filtros = {}; cerrarMenu(); repintar(); };
+  $("elegir").onchange = e => { estado.valor = e.target.value; estado.filtros = {}; cerrarMenu(); repintar(); };
+  $("cabeza").onclick = e => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    if (b.classList.contains("filtro")) { abrirMenu(b.dataset.col, b); return; }
+    const col = b.dataset.col;
+    estado.orden = { col, dir: estado.orden.col === col ? -estado.orden.dir : 1 };
+    cerrarMenu(); repintar();
+  };
+  $("esconder").onclick = e => { e.stopPropagation(); abrirEsconder(e.currentTarget); };
+  $("mas").onclick = () => { estado.visibles += PASO; pintar(); };
+  $("descargar").onclick = descargar;
+  document.addEventListener("mousedown", e => {
+    if (menuAbierto && !menuAbierto.contains(e.target) && !e.target.closest(".filtro") && e.target.id !== "esconder") cerrarMenu();
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") cerrarMenu(); });
+  ponerVista("fecha");
+}
+iniciar();
+</script>
+</body>
+</html>

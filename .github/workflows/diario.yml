@@ -1,0 +1,73 @@
+# Recolecta el informe diario de INDOMET y publica la página.
+# Horas en UTC. República Dominicana es UTC-4 todo el año (sin horario de verano).
+# Se usa el minuto 7 porque GitHub dice que el inicio de cada hora es su momento más congestionado.
+name: Recolección diaria
+
+on:
+  schedule:
+    - cron: "7 16 * * *" # 12:07 p. m. RD
+    - cron: "7 20 * * *" # 4:07 p. m. RD
+    - cron: "7 0 * * *"  # 8:07 p. m. RD
+    - cron: "7 4 * * *"  # 12:07 a. m. RD, con revisión de atraso
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: recoleccion
+  cancel-in-progress: false
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publicar.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pypdf==6.16.2
+
+      - name: Recolectar informes
+        id: recolectar
+        run: |
+          set +e
+          if [ "${{ github.event.schedule }}" = "7 4 * * *" ]; then
+            python recolector/recolectar.py --revisar-atraso
+          else
+            python recolector/recolectar.py
+          fi
+          echo "codigo=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Guardar datos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "chore(datos): recolección $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+
+      - name: Preparar página
+        run: |
+          mkdir -p _site
+          cp sitio/index.html data/observaciones.csv data/estado.json _site/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: publicar
+        uses: actions/deploy-pages@v4
+
+      - name: Avisar si algo falló
+        if: steps.recolectar.outputs.codigo != '0'
+        run: |
+          echo "El recolector encontró un problema. Revise el paso 'Recolectar informes'."
+          exit 1
