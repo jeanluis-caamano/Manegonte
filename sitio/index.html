@@ -80,9 +80,9 @@
   footer { border-top: 1px solid var(--line); background: var(--alt); margin-top: 24px; }
   footer .dentro { max-width: var(--maxw); margin: 0 auto; padding: 28px var(--pad); }
   footer .wordmark { font-size: 22px; margin-bottom: 10px; }
-  .consigna { font-family: var(--serif); font-size: 17px; color: var(--ink); margin: 0 0 16px; }
+  .consigna { font-family: var(--serif); font-size: 17px; color: var(--ink); margin: 0; }
   .consigna em { font-style: italic; font-weight: 600; color: var(--do-red); }
-  .fuente { font-family: var(--serif); font-size: 15px; color: var(--mid); margin: 0; max-width: 70ch; }
+  .fuente { font-size: 11.5px; color: var(--dim); margin: 3px 0 0; }
 
   .menu { position: absolute; z-index: 10; width: 330px; max-width: calc(100vw - 16px); background: #fff;
           border: 1px solid var(--line); border-radius: var(--r); box-shadow: 0 10px 30px rgba(23, 24, 26, .12); padding: 8px; font-size: 14.5px; }
@@ -117,6 +117,7 @@
 <main>
   <h1>Temperaturas extremas y precipitaciones</h1>
   <p class="sub" id="estado">Cargando datos…</p>
+  <p class="fuente">Fuente: Instituto Dominicano de Meteorología (INDOMET), informes diarios publicados en indomet.gob.do. Una casilla vacía significa que la estación no reportó ese dato.</p>
 
   <div class="fila vistas-barra">
     <div class="fila vistas" id="vistas"></div>
@@ -146,8 +147,6 @@
   <div class="dentro">
     <span class="wordmark"><span class="b">M</span><span class="r">a</span><span class="w">n</span><span class="b">E</span><span class="r">G</span><span class="w">o</span><span class="b">n</span><span class="r">T</span><span class="w">e</span></span>
     <p class="consigna">¿Cuál es la consigna? <em>¡Viva la patria!</em></p>
-    <p class="fuente">Fuente: Instituto Dominicano de Meteorología (INDOMET), informes diarios publicados en indomet.gob.do.
-    Una casilla vacía significa que la estación no reportó ese dato.</p>
   </div>
 </footer>
 
