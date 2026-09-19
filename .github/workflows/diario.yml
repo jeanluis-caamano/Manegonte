@@ -10,6 +10,11 @@ on:
     - cron: "7 0 * * *"  # 8:07 p. m. RD
     - cron: "7 4 * * *"  # 12:07 a. m. RD, con revisión de atraso
   workflow_dispatch:
+    inputs:
+      prueba_fallo:
+        description: "Fallar a propósito para comprobar que llega el correo de aviso"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -27,9 +32,9 @@ jobs:
       name: github-pages
       url: ${{ steps.publicar.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -59,12 +64,18 @@ jobs:
           mkdir -p _site
           cp sitio/index.html data/observaciones.csv data/estado.json _site/
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
       - id: publicar
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
+
+      - name: Prueba de aviso
+        if: inputs.prueba_fallo
+        run: |
+          echo "Fallo de prueba pedido a mano. Si llegó el correo, los avisos funcionan."
+          exit 1
 
       - name: Avisar si algo falló
         if: steps.recolectar.outputs.codigo != '0'
