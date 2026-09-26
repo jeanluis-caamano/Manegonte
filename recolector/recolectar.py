@@ -8,6 +8,9 @@ Cada ejecución:
   4. Si un informe no se puede leer con seguridad, no guarda nada de él y termina con error,
      para que GitHub envíe un aviso por correo.
 
+Si el sitio de INDOMET no responde, no hay aviso: se reintenta en la próxima corrida, y si
+la caída dura más de 3 días, la revisión de atraso avisa.
+
 Los documentos de la lista que no traen la tabla diaria (resúmenes mensuales, boletines de
 pronóstico) se marcan como "ignorado" y no generan aviso.
 
@@ -218,7 +221,12 @@ def main():
     ya_rechazados = {u for u, r in registro.items() if r["resultado"] == "rechazado"}
     errores = []
 
-    pendientes = [i for i in lista_de_informes()
+    try:
+        lista = lista_de_informes()
+    except ConnectionError as e:
+        print("AVISO: INDOMET no respondió; se reintentará en la próxima corrida.", e, flush=True)
+        lista = None
+    pendientes = [i for i in lista or []
                   if registro.get(i["source_url"], {}).get("resultado") not in ("guardado", "ignorado")]
     # Del más antiguo al más reciente: si INDOMET publica una corrección del mismo día, gana la última.
     pendientes.sort(key=lambda i: i["date_gmt"])
@@ -231,9 +239,13 @@ def main():
         entrada = {"informe": url, "publicado_utc": inf["date_gmt"], "fecha_datos": "", "filas": 0}
         try:
             fecha, filas = leer_informe(descargar(url))
+        except ConnectionError as e:
+            # INDOMET no entregó el PDF: no se anota, así se reintenta en la próxima corrida.
+            print("AVISO: INDOMET no respondió; se reintentará en la próxima corrida.", e, flush=True)
+            continue
         except NoEsInformeDiario as e:
             entrada.update(resultado="ignorado", detalle=str(e))
-        except (InformeIlegible, pypdf.errors.PyPdfError, ConnectionError) as e:
+        except (InformeIlegible, pypdf.errors.PyPdfError) as e:
             entrada.update(resultado="rechazado", detalle=str(e))
             if url not in ya_rechazados:
                 errores.append(f"{url}: {e}")
@@ -244,17 +256,18 @@ def main():
         registro[url] = entrada
 
     observaciones = [o for f in sorted(por_fecha) for o in sorted(por_fecha[f], key=lambda o: o["num"])]
-    escribir_csv(OBSERVACIONES, COLUMNAS_OBS, observaciones)
-    escribir_csv(INFORMES, COLUMNAS_INF, sorted(registro.values(), key=lambda r: r["publicado_utc"]))
-
     ahora = dt.datetime.now(HORA_RD)
     ultimo = max(por_fecha) if por_fecha else None
-    ESTADO.write_text(json.dumps({
-        "actualizado": ahora.strftime("%Y-%m-%dT%H:%M"),
-        "ultimo_dia": ultimo,
-        "dias": len(por_fecha),
-        "filas": len(observaciones),
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # Sin la lista de INDOMET no se revisó nada: los datos y la hora de la última revisión quedan como estaban.
+    if lista is not None:
+        escribir_csv(OBSERVACIONES, COLUMNAS_OBS, observaciones)
+        escribir_csv(INFORMES, COLUMNAS_INF, sorted(registro.values(), key=lambda r: r["publicado_utc"]))
+        ESTADO.write_text(json.dumps({
+            "actualizado": ahora.strftime("%Y-%m-%dT%H:%M"),
+            "ultimo_dia": ultimo,
+            "dias": len(por_fecha),
+            "filas": len(observaciones),
+        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if revisar_atraso and ultimo:
         atraso = (ahora.date() - dt.date.fromisoformat(ultimo)).days
