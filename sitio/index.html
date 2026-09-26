@@ -152,6 +152,7 @@
   <div class="fila barra">
     <span class="cuenta" id="cuenta"></span>
     <div class="fila">
+      <button id="mas-arriba">Mostrar 100 filas más</button>
       <button id="esconder">Esconder Columnas</button>
       <button class="principal" id="descargar">Descargar Excel</button>
     </div>
@@ -397,15 +398,17 @@ function pintar() {
 
   if (vista.elegir && !estado.valor) {
     $("cuerpo").innerHTML = `<tr><td class="vacio" colspan="${cols.length}">${vista.elegir} arriba.</td></tr>`;
-    $("cuenta").textContent = ""; $("mas").hidden = true; $("nota").textContent = ""; $("descargar").disabled = true;
+    $("cuenta").textContent = ""; $("mas").hidden = true; $("mas-arriba").disabled = true; $("nota").textContent = ""; $("descargar").disabled = true;
     return;
   }
   const filas = resultado();
-  $("cuenta").textContent = plural(filas.length, "fila", "filas");
+  $("cuenta").textContent = filas.length > estado.visibles
+    ? `${estado.visibles.toLocaleString("es-DO")} de ${plural(filas.length, "fila", "filas")}` : plural(filas.length, "fila", "filas");
   $("cuerpo").innerHTML = filas.length
     ? filas.slice(0, estado.visibles).map(d => "<tr>" + cols.map(c => celda(c, d)).join("") + "</tr>").join("")
     : `<tr><td class="vacio" colspan="${cols.length}">${estado.vista === "fecha" && !filasDeLaVista().length ? (estado.desde === estado.hasta ? "No hay datos para esta fecha." : "No hay datos para estas fechas.") : "Ninguna fila cumple los filtros."}</td></tr>`;
   $("mas").hidden = filas.length <= estado.visibles;
+  $("mas-arriba").disabled = filas.length <= estado.visibles;
   $("nota").textContent = filas.length > estado.visibles
     ? `Se muestran ${estado.visibles.toLocaleString("es-DO")} de ${filas.length.toLocaleString("es-DO")} filas. El Excel incluye todas.` : "";
   $("descargar").disabled = filas.length === 0 || cols.length === 0;
@@ -674,7 +677,7 @@ async function iniciar() {
     cerrarMenu(); repintar();
   };
   $("esconder").onclick = e => { e.stopPropagation(); abrirEsconder(e.currentTarget); };
-  $("mas").onclick = () => { estado.visibles += PASO; pintar(); };
+  $("mas").onclick = $("mas-arriba").onclick = () => { estado.visibles += PASO; pintar(); };
   $("descargar").onclick = descargar;
   document.addEventListener("mousedown", e => {
     if (menuAbierto && !menuAbierto.contains(e.target) && !e.target.closest(".filtro, .abre-lista") && e.target.id !== "esconder") cerrarMenu();
