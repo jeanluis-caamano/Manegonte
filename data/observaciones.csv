@@ -47794,3 +47794,185 @@ fecha,num,estacion,provincia,localidad,tipo,tmax,tmin,lluvia,informe
 2026-10-23,084,BONAO,MONSEÑOR NOUEL,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x23-b.pdf
 2026-10-23,085,ELÍAS PIÑA,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x23-b.pdf
 2026-10-23,086,JUMA BEJUCAL,MONSEÑOR NOUEL,IDIAF,EMCV,34.2,22.4,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x23-b.pdf
+2026-10-24,001,CABRAL,BARAHONA,MINISTERIO DE AGRICULTURA,EMCV,32.3,23.4,164.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,002,POLO,BARAHONA,INDOCAFE,EMCI,29.0,18.5,57.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,003,SAN CRISTÓBAL,SAN CRISTÓBAL,INSTITUTO POLITÉCNICO LOYOLA,EMCI,33.0,22.2,30.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,004,ARPT. EL CATEY,SAMANÁ,INDOMET,EMCI,31.8,23.5,25.9,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,005,VILLA ALTAGRACIA,SAN CRISTÓBAL,ESCUELA JAVIER ANGULO GURIDI,EMCI,,,25.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,006,EL FACTOR (EMA),MARÍA TRINIDAD SÁNCHEZ,INTEC,EMAP,32.1,25.3,24.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,007,LOS COCOS (EMA),BAHORUCO,PRIVADA,EMAP,,,24.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,008,ARPT. ARROYO BARRIL,SAMANÁ,INDOMET,EMCI,33.5,24.0,19.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,009,ENRIQUILLO,BARAHONA,MINISTERIO DE AGRICULTURA,EMCV,32.5,22.3,16.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,010,OVIEDO,PEDERNALES,CLÍNICA RURAL OVIEDO,EMCI,33.0,25.0,15.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,011,ARROYO LORO,SAN JUAN,IDIAF,EMCI,32.4,21.3,14.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,012,PEDERNALES,PEDERNALES,INDRHI,EMCI,,,13.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,013,BARRAQUITO (EMA),DUARTE,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,33.6,24.7,12.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,014,PALO DE VIENTO (EMA),SAN JUAN,PRIVADA,EMAP,27.9,22.5,11.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,015,CABRERA,MARÍA TRINIDAD SÁNCHEZ,ESCUELA ARÍSTIDES FIALLO CABRAL,EMCI,32.5,27.0,11.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,016,LOYOLA (EMA),SAN CRISTÓBAL,PRIVADA,EMAP,,,10.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,017,VILLA RIVA,DUARTE,HOSP. MPAL. ALICIA DE LEGENDRE,EMCI,31.6,24.0,10.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,018,ARPT. LA ISABELA,SANTO DOMINGO,INDOMET,EMCI,34.0,23.6,10.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,019,SALCEDO,HERMANAS MIRABAL,PROPIEDAD DEL EMPLEADO,EMCI,,,8.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,020,ARPT. MARÍA MONTEZ,BARAHONA,INDOMET,EMCI,31.9,27.6,7.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,021,JIMANÍ,INDEPENDENCIA,MINISTERIO DE AGRICULTURA,EMCI,32.6,26.5,7.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,022,DAJABÓN,DAJABÓN,INSTITUTO POLITÉCNICO LOYOLA,EMCI,36.0,19.7,6.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,023,ARPT. GREGORIO LUPERÓN,PUERTO PLATA,INDOMET,EMCI,30.0,23.0,6.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,024,SAN RAFAEL DEL YUMA,LA ALTAGRACIA,MINISTERIO DE AGRICULTURA,EMCI,33.2,24.9,5.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,025,RESTAURACIÓN,DAJABÓN,MINISTERIO DE AGRICULTURA,EMCI,32.6,16.9,5.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,026,OLIVARES,PEDERNALES,INDRHI,EMCI,,,4.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,027,MULTIMODAL CAUCEDO (EMA),SANTO DOMINGO,PRIVADA,EMAP,,,4.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,028,PADRE LAS CASAS,AZUA,HOSP. NTRA. SRA. DEL CARMEN,EMCI,32.8,21.0,3.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,029,RÍO SAN JUAN,MARÍA TRINIDAD SÁNCHEZ,HOSP. MPAL. DR. DESIDERIO ACOSTA,EMCV,31.9,24.9,3.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,030,SABANA DE LA MAR,HATO MAYOR,INDOMET,EMCI,32.5,24.0,2.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,031,SÁNCHEZ,SAMANÁ,MINISTERIO DE AGRICULTURA,EMCI,33.4,23.5,2.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,032,SANTIAGO RODRÍGUEZ,SANTIAGO RODRÍGUEZ,INDOMET,EMCI,33.3,23.0,2.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,033,NIZAO (EMA),,,,,,2.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,034,BAYAHÍBE (EMA),LA ALTAGRACIA,PRIVADA,EMAP,,,1.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,035,SABANETA (EMA),SANTIAGO RODRÍGUEZ,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,32.7,24.0,1.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,036,GURABO,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,1.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,037,ENSANCHE LA FE (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,1.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,038,LA AGUSTINA (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,1.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,039,BAVARO (EMA),LA ALTAGRACIA,PRIVADA,EMAP,31.9,27.4,1.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,040,SAMANÁ,SAMANÁ,COMANDANCIA DE PUERTO DE SAMANÁ,EMCI,33.9,18.0,1.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,041,ARPT. DE LA ROMANA,LA ROMANA,INDOMET,EMCI,33.7,23.8,0.9,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,042,BAYAGUANA,MONTE PLATA,INDOMET,EMCI,32.2,25.0,0.9,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,043,VILLA VASQUEZ (EMA),MONTE CRISTI,JUNTA DE REGANTES,EMAI,,,0.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,044,ZONA FRANCA INDUSTRIAL (EMA),SANTO DOMINGO,PRIVADA,EMAP,,,0.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,045,MONTE CRISTI,MONTE CRISTI,INDOMET,EMCI,32.2,24.5,0.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,046,ALTAMIRA,PUERTO PLATA,HOSP. MPAL. DE ALTAMIRA,EMCI,29.4,23.4,0.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,047,CENTRO DE LOS HEROES (EMA),DISTRITO NACIONAL,MINISTERIO DE ENERGIA Y MINA,EMAP,32.4,29.2,0.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,049,NAVARRETE,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,050,ALTO BANDERA (EMA),LA VEGA,INTEC,EMAP,17.3,8.3,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,051,ARPT. DE LAS AMÉRICAS,SANTO DOMINGO,INDOMET,EMCI,32.0,25.7,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,052,CIUDAD JUAN BOSCH (EMA),SANTO DOMINGO,PRIVADA,EMAP,,,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,053,SABANA GRANDE DE BOYÁ,MONTE PLATA,MINISTERIO DE AGRICULTURA,EMCV,,,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,054,VILLA GONZALES,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCI,,,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,055,ARPT. DE PUNTA CANA,LA ALTAGRACIA,INDOMET,EMCI,32.8,25.5,0.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,056,LOS CACICAZGOS (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,0.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,057,VILLA ISABELA,PUERTO PLATA,MINISTERIO DE AGRICULTURA,EMCV,30.0,23.0,0.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,058,ESCONDIDO,PERAVIA,MINISTERIO DE AGRICULTURA,EMCV,32.0,26.0,0.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,059,SAN JOSÉ DE OCOA,SAN JOSÉ DE OCOA,HOSP. SAN JOSÉ DE OCOA,EMCI,32.7,24.1,0.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,060,SANTO DOMINGO ESTE,SANTO DOMINGO,INDOMET,EMCI,32.5,24.0,0.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,061,ARPT. DEL CIBAO,SANTIAGO,INDOMET,EMCI,30.4,23.5,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,062,BASE AÉREA DE SAN ISIDRO,SANTO DOMINGO,FUERZA AÉREA DOMINICANA,EMCV,30.0,23.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,063,BUCARA (EMA),SANTIAGO,MINISTERIO DE AGRICULTURA,EMAI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,064,COFRESI (EMA),PUERTO PLATA,PRIVADA,EMAP,29.5,26.9,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,065,CONSTANZA,LA VEGA,MINISTERIO DE AGRICULTURA,EMCI,29.8,10.7,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,066,CONSTANZA (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,28.2,16.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,067,EL MILLON (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,068,ELÍAS PIÑA,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,069,GASPAR HERNÁNDEZ,ESPAILLAT,PROPIEDAD DEL EMPLEADO,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,070,HATO MAYOR,HATO MAYOR,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,071,HONDO VALLE,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCI,27.7,17.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,072,JARABACOA,LA VEGA,INDRHI / MARENA,EMCI,30.2,20.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,073,LA VEGA,LA VEGA,IATESA,EMCI,32.5,23.4,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,074,LA VICTORIA,SANTO DOMINGO,CUERPO DE BOMBEROS,EMCI,34.0,25.3,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,075,LOS LLANOS,SAN PEDRO DE MACORÍS,MINISTERIO DE AGRICULTURA,EMCI,33.6,25.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,076,LOS PRADOS (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,077,MICHES (EMA),EL SEIBO,PRIVADA,EMAP,33.6,25.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,078,MONCIÓN (EMA),SANTIAGO RODRÍGUEZ,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,29.3,21.7,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,079,PERALTA,AZUA,HOSP. MPAL. DE PERALTA,EMCI,32.4,19.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,080,PRESA DE TAVERAS (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,28.3,22.1,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,081,PROLONGACION 27 DE FEBRERO,DISTRITO NACIONAL,PRIVADA,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,082,RANCHO ARRIBA,SAN JOSÉ DE OCOA,CENTRO TECNOLÓGICO COMUNITARIO,EMCI,30.6,20.7,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,083,SAJOMA (EMA),SANTIAGO,PLAN SIERRA,EMAI,27.9,24.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,084,TÁBARA ABAJO,AZUA,INDRHI,EMCI,33.5,20.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-24,085,VILLA GONZALE (EMA),SANTIAGO,IGLESIA,EMAI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x24-a.pdf
+2026-10-25,034,SAN JOSE DE OCOA (EMA),SAN JOSÉ DE OCOA,INDOMET,EMAP,25.4,21.7,73.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,035,SAN JOSÉ DE OCOA,SAN JOSÉ DE OCOA,HOSP. SAN JOSÉ DE OCOA,EMCI,29.2,19.3,64.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,036,LOYOLA (EMA),SAN CRISTÓBAL,PRIVADA,EMAP,,,59.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,037,ENRIQUILLO,BARAHONA,MINISTERIO DE AGRICULTURA,EMCV,29.0,20.5,56.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,038,VILLA ALTAGRACIA,SAN CRISTÓBAL,ESCUELA JAVIER ANGULO GURIDI,EMCI,,,54.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,039,SAN CRISTÓBAL,SAN CRISTÓBAL,INSTITUTO POLITÉCNICO LOYOLA,EMCI,28.0,20.0,50.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,040,ARPT. LA ISABELA,SANTO DOMINGO,INDOMET,EMCI,30.1,24.0,47.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,041,PEDERNALES,PEDERNALES,INDRHI,EMCI,,,45.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,042,ARPT. MARÍA MONTEZ,BARAHONA,INDOMET,EMCI,26.7,23.8,41.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,043,OLIVARES,PEDERNALES,INDRHI,EMCI,,,37.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,044,POLO,BARAHONA,INDOCAFE,EMCI,30.0,17.2,36.9,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,045,PERALTA,AZUA,HOSP. MPAL. DE PERALTA,EMCI,29.6,19.5,27.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,046,RANCHO ARRIBA,SAN JOSÉ DE OCOA,CENTRO TECNOLÓGICO COMUNITARIO,EMCI,25.4,20.9,23.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,047,BAYAGUANA,MONTE PLATA,INDOMET,EMCI,30.4,24.8,22.9,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,048,COTUI HOSP.MUNICIPAL (EMA),SÁNCHEZ RAMÍREZ,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,29.1,24.2,22.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,049,JIMANÍ,INDEPENDENCIA,MINISTERIO DE AGRICULTURA,EMCI,29.5,23.6,21.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,050,CABRAL,BARAHONA,MINISTERIO DE AGRICULTURA,EMCV,31.2,23.0,19.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,051,OVIEDO,PEDERNALES,CLÍNICA RURAL OVIEDO,EMCI,29.5,23.5,18.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,052,PADRE LAS CASAS,AZUA,HOSP. NTRA. SRA. DEL CARMEN,EMCI,25.0,21.2,16.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,053,LA VICTORIA,SANTO DOMINGO,CUERPO DE BOMBEROS,EMCI,30.0,25.5,14.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,054,CIUDAD JUAN BOSCH (EMA),SANTO DOMINGO,PRIVADA,EMAP,,,14.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,055,LOS JENGIBRES,NAGUA,INDRHI,EMCI,,,14.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,056,ELÍAS PIÑA,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCV,,,14.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,057,LOS CACICAZGOS (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,13.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,058,ALTO BANDERA (EMA),LA VEGA,INTEC,EMAP,11.2,9.5,12.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,059,ARROYO LORO,SAN JUAN,IDIAF,EMCI,25.0,21.5,11.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,060,SABANA GRANDE DE BOYÁ,MONTE PLATA,MINISTERIO DE AGRICULTURA,EMCV,,,11.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,061,PASO AL MEDIO,SAN PEDRO DE MACORÍS,INDRHI,EMCI,,,11.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,062,BOHECHÍO,SAN JUAN,MINISTERIO DE AGRICULTURA,EMCV,,,11.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,063,ZONA FRANCA INDUSTRIAL (EMA),SANTO DOMINGO,PRIVADA,EMAP,,,10.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,064,SALCEDO,HERMANAS MIRABAL,PROPIEDAD DEL EMPLEADO,EMCI,,,10.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,065,DAJABÓN,DAJABÓN,INSTITUTO POLITÉCNICO LOYOLA,EMCI,35.6,19.4,9.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,066,JARDÍN BOTÁNICO NACIONAL,DISTRITO NACIONAL,JARDÍN BOTÁNICO NACIONAL,EMCV,30.4,21.3,9.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,067,EL LUCERO (EMA),SAN JUAN,PRIVADA,EMAP,,,9.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,068,HONDO VALLE,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCI,27.5,17.9,9.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,069,LOS LLANOS,SAN PEDRO DE MACORÍS,MINISTERIO DE AGRICULTURA,EMCI,31.3,24.8,9.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,070,LOS COCOS (EMA),BAHORUCO,PRIVADA,EMAP,,,9.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,071,MULTIMODAL CAUCEDO (EMA),SANTO DOMINGO,PRIVADA,EMAP,,,9.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,072,RESTAURACIÓN,DAJABÓN,MINISTERIO DE AGRICULTURA,EMCI,32.3,16.4,8.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,073,EL CERCADO,SAN JUAN,MINISTERIO DE AGRICULTURA,EMCV,,,7.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,074,PARQUE MIRADOR SUR,DISTRITO NACIONAL,AYUNTAMIENTO,EMCV,33.4,22.2,6.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,075,ARPT. DE LAS AMÉRICAS,SANTO DOMINGO,INDOMET,EMCI,30.7,26.9,6.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,076,BONAO,MONSEÑOR NOUEL,MINISTERIO DE AGRICULTURA,EMCV,,,5.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,077,JARABACOA,LA VEGA,INDRHI / MARENA,EMCI,26.2,20.0,5.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,078,JUMA BEJUCAL,MONSEÑOR NOUEL,IDIAF,EMCV,28.8,22.6,5.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,079,CONSTANZA,LA VEGA,MINISTERIO DE AGRICULTURA,EMCI,23.4,11.0,5.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,080,CONSTANZA (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,21.6,17.2,4.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,081,SABANETA (EMA),SANTIAGO RODRÍGUEZ,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,27.4,23.3,3.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,082,SAJOMA (EMA),SANTIAGO,PLAN SIERRA,EMAI,,,3.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,083,LUPERÓN,PUERTO PLATA,MINISTERIO DE AGRICULTURA,EMCV,,,3.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,084,ARPT. DE PUNTA CANA,LA ALTAGRACIA,INDOMET,EMCI,32.8,26.0,3.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,085,LA VEGA,LA VEGA,IATESA,EMCI,27.0,22.5,3.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,086,VILLA ISABELA,PUERTO PLATA,MINISTERIO DE AGRICULTURA,EMCV,30.0,22.8,3.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,087,LAS CANAS (EMA),MONTE CRISTI,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,,,2.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,088,MICHES (EMA),EL SEIBO,PRIVADA,EMAP,32.2,25.7,2.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,089,SAMANÁ,SAMANÁ,COMANDANCIA DE PUERTO DE SAMANÁ,EMCI,31.9,19.3,2.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,090,MONTE CRISTI,MONTE CRISTI,INDOMET,EMCI,30.4,25.2,2.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,091,SANTIAGO RODRÍGUEZ,SANTIAGO RODRÍGUEZ,INDOMET,EMCI,27.5,23.7,2.5,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,092,VILLA VASQUEZ (EMA),MONTE CRISTI,JUNTA DE REGANTES,EMAI,,,2.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,093,JANICO (EMA),LA VEGA,PLAN SIERRA,EMAI,,,2.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,094,LAS MATAS DE SANTA CRUZ,MONTE CRISTI,INDRHI,EMCV,,,2.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,095,EL FACTOR (EMA),MARÍA TRINIDAD SÁNCHEZ,INTEC,EMAP,30.1,25.4,1.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,096,CENTRO DE LOS HEROES (EMA),DISTRITO NACIONAL,MINISTERIO DE ENERGIA Y MINA,EMAP,30.4,27.7,1.6,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,097,TÁBARA ABAJO,AZUA,INDRHI,EMCI,33.5,22.0,1.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,098,ARPT. EL CATEY,SAMANÁ,INDOMET,EMCI,29.4,24.2,1.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,099,RÍO SAN JUAN,MARÍA TRINIDAD SÁNCHEZ,HOSP. MPAL. DR. DESIDERIO ACOSTA,EMCV,30.8,25.7,1.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,100,SAN RAFAEL DEL YUMA,LA ALTAGRACIA,MINISTERIO DE AGRICULTURA,EMCI,32.0,26.6,0.9,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,101,ARPT. GREGORIO LUPERÓN,PUERTO PLATA,INDOMET,EMCI,30.3,23.8,0.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,102,NAVARRETE,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.8,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,103,TAVERA,SANTIAGO,INDRHI,EMCI,,,0.7,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,104,ALTAMIRA,PUERTO PLATA,HOSP. MPAL. DE ALTAMIRA,EMCI,28.9,23.1,0.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,105,ARPT. DEL CIBAO,SANTIAGO,INDOMET,EMCI,28.2,23.3,0.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,106,CABRERA,MARÍA TRINIDAD SÁNCHEZ,ESCUELA ARÍSTIDES FIALLO CABRAL,EMCI,30.5,24.0,0.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,107,MAO,VALVERDE,INDRHI / MINISTERIO DE AGRICULTURA,EMCV,,,0.4,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,108,COFRESI (EMA),PUERTO PLATA,PRIVADA,EMAP,30.8,25.9,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,109,LA AGUSTINA (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,0.3,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,110,SAN FRANCISCO DE MACORÍS,DUARTE,San Francisco de Macorís (UASD),EMCI,33.3,24.3,0.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,111,BUCARA (EMA),SANTIAGO,MINISTERIO DE AGRICULTURA,EMAI,,,0.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,112,SANTIAGO (CENTRO),SANTIAGO,HUACALITO,EMCI,,,0.2,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,113,HATO MAYOR,HATO MAYOR,MINISTERIO DE AGRICULTURA,EMCV,,,0.1,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,114,VILLA GONZALES,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,115,ARPT. ARROYO BARRIL,SAMANÁ,INDOMET,EMCI,30.4,23.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,116,ARPT. DE LA ROMANA,LA ROMANA,INDOMET,EMCI,32.5,24.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,117,EL MILLON (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,118,EL SEIBO,EL SEIBO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,119,GASPAR HERNÁNDEZ,ESPAILLAT,PROPIEDAD DEL EMPLEADO,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,120,GURABO,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,121,JARDÍN BOTÁNICO SANTIAGO (EMSANTIAGO,,JARDIN BOTANICO SANTIAGO,EMAI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,122,MONCIÓN (EMA),SANTIAGO RODRÍGUEZ,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,34.7,21.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,123,PALO ÍNDIO,PUERTO PLATA,MINISTERIO DE AGRICULTURA,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,124,PRESA DE TAVERAS (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,26.1,21.1,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,125,PROLONGACION 27 DE FEBRERO,DISTRITO NACIONAL,PRIVADA,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,126,SABANA DE LA MAR,HATO MAYOR,INDOMET,EMCI,32.0,25.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,127,SÁNCHEZ,SAMANÁ,MINISTERIO DE AGRICULTURA,EMCI,33.6,23.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,128,SANTO DOMINGO ESTE,SANTO DOMINGO,INDOMET,EMCI,32.5,24.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,129,TAMBORIL,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,130,VILLA GONZALE (EMA),SANTIAGO,IGLESIA,EMAI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
+2026-10-25,131,VILLA RIVA,DUARTE,HOSP. MPAL. ALICIA DE LEGENDRE,EMCI,29.4,23.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/10/temperaturas-extremas-y-precipitaciones-2026x10x25-b.pdf
