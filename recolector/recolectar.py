@@ -73,14 +73,21 @@ class NoEsInformeDiario(Exception):
     """El documento no trae la tabla diaria (por ejemplo, un resumen mensual)."""
 
 
+class NoExiste(ConnectionError):
+    """INDOMET responde que el archivo no existe: no es una caída, el enlace está roto."""
+
+
 def descargar(url, intentos=3):
     for n in range(intentos):
         r = subprocess.run(
-            ["curl", "-sfL", "--max-time", "90", "-A", "Mozilla/5.0 (Manegonte)", url],
+            ["curl", "-sL", "--max-time", "90", "-A", "Mozilla/5.0 (Manegonte)", "-w", "\n%{http_code}", url],
             capture_output=True,
         )
-        if r.returncode == 0 and r.stdout:
-            return r.stdout
+        cuerpo, _, codigo = r.stdout.rpartition(b"\n")
+        if codigo in (b"404", b"410"):
+            raise NoExiste(f"INDOMET dice que no existe: {url}")
+        if r.returncode == 0 and codigo.startswith(b"2") and cuerpo:
+            return cuerpo
         time.sleep(5 * (n + 1))
     raise ConnectionError(f"No se pudo descargar {url}")
 
@@ -88,7 +95,11 @@ def descargar(url, intentos=3):
 def lista_de_informes():
     informes, pagina = [], 1
     while True:
-        cuerpo = json.loads(descargar(LISTA_URL.format(pagina)))
+        try:
+            cuerpo = json.loads(descargar(LISTA_URL.format(pagina)))
+        except json.JSONDecodeError:
+            # Una página de mantenimiento en lugar de la lista: se trata como si el sitio estuviera caído.
+            raise ConnectionError("INDOMET respondió algo que no es la lista de informes")
         if not isinstance(cuerpo, list) or not cuerpo:
             break
         informes += [i for i in cuerpo if i["source_url"].lower().endswith(".pdf")]
@@ -239,6 +250,11 @@ def main():
         entrada = {"informe": url, "publicado_utc": inf["date_gmt"], "fecha_datos": "", "filas": 0}
         try:
             fecha, filas = leer_informe(descargar(url))
+        except NoExiste as e:
+            # Enlace roto para siempre: se anota como rechazado, y el primer fallo envía el aviso.
+            entrada.update(resultado="rechazado", detalle=str(e))
+            if url not in ya_rechazados:
+                errores.append(f"{url}: {e}")
         except ConnectionError as e:
             # INDOMET no entregó el PDF: no se anota, así se reintenta en la próxima corrida.
             print("AVISO: INDOMET no respondió; se reintentará en la próxima corrida.", e, flush=True)
