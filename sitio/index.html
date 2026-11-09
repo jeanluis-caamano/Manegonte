@@ -110,6 +110,15 @@
   .modos button:hover { color: var(--ink); }
   .modos button.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
   .panel { margin-top: 16px; }
+  #res-informes h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; margin: 0 0 2px; }
+  .informe th, .informe td { padding: 6px 9px; }
+  .informe .est { position: sticky; left: 0; background: #fff; white-space: nowrap; }
+  .informe th.est { background: var(--alt); z-index: 2; }
+  .informe tr.grupo td { background: var(--alt); font-weight: 700; padding-top: 10px; }
+  .informe tr.prom td { color: var(--mid); font-weight: 600; }
+  .informe tr.general td { font-weight: 700; border-top: 2px solid var(--line); }
+  .informe tbody tr:hover td.est { background: var(--alt); }
+  .notas { color: var(--dim); font-size: 13px; padding-left: 18px; margin: 14px 0 0; max-width: 100ch; }
   #res-analisis h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; margin: 26px 0 2px; }
   .hallazgos { list-style: none; padding: 0; margin: 14px 0 0; max-width: 78ch; }
   .hallazgos li { padding: 14px 0; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 18px; line-height: 1.5; }
@@ -135,6 +144,7 @@
     <button data-modo="tabla" class="on">Tabla</button>
     <button data-modo="analisis">Análisis</button>
     <button data-modo="graficas">Gráficas</button>
+    <button data-modo="informes">Informes</button>
   </nav>
 
   <section id="modo-tabla">
@@ -167,7 +177,11 @@
   </section>
 
   <section id="modo-extra" hidden>
-    <div class="fila panel">
+    <div id="inf-controles" hidden>
+      <div class="fila vistas panel" id="inf-marcos"></div>
+      <div class="fila panel" id="inf-elegir" style="gap: 6px;"></div>
+    </div>
+    <div class="fila panel" id="panel-fechas">
       <span class="rotulo">Desde</span>
       <select id="sd-d" aria-label="Desde, día"></select><select id="sd-m" aria-label="Desde, mes"></select><select id="sd-a" aria-label="Desde, año"></select>
       <span class="rotulo">Hasta</span>
@@ -189,6 +203,7 @@
       <p class="nota" id="g-nota"></p>
       <div class="lienzo" id="g-lienzo"></div>
     </div>
+    <div id="res-informes" class="panel" hidden></div>
   </section>
 
 </main>
@@ -937,6 +952,171 @@ function descargarImagen() {
   a.click();
 }
 
+/* ---------- Informes ---------- */
+const MARCOS = [["semana", "Semana"], ["mes", "Mes"], ["trimestre", "Trimestre"], ["anio", "Año"], ["personalizado", "Personalizado"]];
+const LLUVIA_DIA = 1; // un día cuenta como "con lluvia" desde 1 mm
+const inf = { marco: "mes", semana: "", mes: 1, anio: 2026 };
+let informe = null; // lo último que se pintó; el Excel sale de aquí
+const lunesDe = f => sumarDias(f, -((new Date(f + "T12:00:00Z").getUTCDay() + 6) % 7));
+
+function rangoInforme() {
+  if (inf.marco === "semana") return [inf.semana, sumarDias(inf.semana, 6)];
+  if (inf.marco === "mes") return [iso(inf.anio, inf.mes, 1), iso(inf.anio, inf.mes, finDeMes(inf.anio, inf.mes))];
+  if (inf.marco === "trimestre") {
+    const a = inf.mes > 10 ? inf.anio + 1 : inf.anio, m = (inf.mes + 1) % 12 + 1;
+    return [iso(inf.anio, inf.mes, 1), iso(a, m, finDeMes(a, m))];
+  }
+  if (inf.marco === "anio") return [iso(inf.anio, 1, 1), iso(inf.anio, 12, 31)];
+  return [sel.desde, sel.hasta];
+}
+
+function pintarControlesInforme() {
+  $("inf-marcos").innerHTML = MARCOS.map(([id, n]) => `<button data-marco="${id}" class="${inf.marco === id ? "activa" : ""}">${n}</button>`).join("");
+  const anos = [...new Set(datos.map(d => Number(d.fecha.slice(0, 4))))].sort();
+  const anios = `<select id="inf-anio" aria-label="Año">${anos.map(a => `<option value="${a}" ${a === inf.anio ? "selected" : ""}>${a}</option>`).join("")}</select>`;
+  const meses = `<select id="inf-mes" aria-label="Mes">${MESES.map((n, i) => `<option value="${i + 1}" ${i + 1 === inf.mes ? "selected" : ""}>${n}</option>`).join("")}</select>`;
+  let h = "";
+  if (inf.marco === "semana") {
+    const opc = [];
+    for (let l = lunesDe(ultimo); l >= lunesDe(primerDia); l = sumarDias(l, -7))
+      opc.push(`<option value="${l}" ${l === inf.semana ? "selected" : ""}>${fechaBonita(l)} al ${fechaBonita(sumarDias(l, 6))}</option>`);
+    h = `<span class="rotulo">Semana, de lunes a domingo</span><select id="inf-semana" aria-label="Semana">${opc.join("")}</select>`;
+  } else if (inf.marco === "mes") h = `<span class="rotulo">Mes</span>${meses}${anios}`;
+  else if (inf.marco === "trimestre") h = `<span class="rotulo">Tres meses, desde</span>${meses}${anios}`;
+  else if (inf.marco === "anio") h = `<span class="rotulo">Año</span>${anios}`;
+  $("inf-elegir").innerHTML = h;
+  $("inf-elegir").hidden = !h;
+  $("panel-fechas").hidden = modo === "informes" && inf.marco !== "personalizado";
+}
+
+function calcularInforme() {
+  const [desde, hasta] = rangoInforme();
+  const dias = [];
+  for (let f = desde; f <= hasta; f = sumarDias(f, 1)) dias.push(f);
+  const porDias = dias.length <= 31;
+  const unAnio = desde.slice(0, 4) === hasta.slice(0, 4);
+  const partes = [];
+  if (porDias) for (const f of dias) partes.push({ nombre: String(Number(f.slice(8))), desde: f, hasta: f });
+  else for (let a = Number(desde.slice(0, 4)), m = Number(desde.slice(5, 7)); iso(a, m, 1) <= hasta; m === 12 ? (a++, m = 1) : m++) {
+    const i = iso(a, m, 1), f = iso(a, m, finDeMes(a, m));
+    partes.push({ nombre: MESES[m - 1].slice(0, 3) + (unAnio ? "" : " " + a), desde: i < desde ? desde : i, hasta: f > hasta ? hasta : f });
+  }
+
+  // Las estaciones salen de la selección; sus informes se toman todos, aunque INDOMET deje la provincia en blanco algún día.
+  const nombres = new Set(subconjunto(desde, hasta).map(d => d.estacion));
+  const provincia = new Map(); // la última provincia que INDOMET imprimió para cada estación
+  for (const d of datos) if (nombres.has(d.estacion) && d.provincia && (!provincia.has(d.estacion) || d.fecha >= provincia.get(d.estacion)[0])) provincia.set(d.estacion, [d.fecha, d.provincia]);
+  const lluviaPorDia = (d0, d1) => {
+    const m = new Map(), malos = new Set();
+    for (const d of datos) {
+      if (d.fecha < d0 || d.fecha > d1 || !nombres.has(d.estacion) || d.lluvia === null) continue;
+      if (!m.has(d.estacion)) m.set(d.estacion, new Map());
+      const e = m.get(d.estacion);
+      if (e.has(d.fecha) && e.get(d.fecha) !== d.lluvia) malos.add(d.estacion + "|" + d.fecha);
+      e.set(d.fecha, d.lluvia);
+    }
+    // Dos valores distintos el mismo día: no se sabe cuál vale, así que ese día cuenta como sin informe.
+    for (const k of malos) { const [e, f] = k.split("|"); m.get(e).delete(f); }
+    return [m, malos.size];
+  };
+  const [ahora, dobles] = lluviaPorDia(desde, hasta), [antes] = lluviaPorDia(anioAntes(desde), anioAntes(hasta));
+
+  const suma = (e, p) => {
+    let t = 0, n = 0;
+    for (let f = p.desde; f <= p.hasta; f = sumarDias(f, 1)) if (e.has(f)) { t += e.get(f); n++; }
+    return n ? { v: t, falta: n < diasEntre(p.desde, p.hasta) + 1 } : { v: null };
+  };
+  const filaDe = nombre => {
+    const e = ahora.get(nombre) || new Map(), vals = [...e.values()];
+    const celdas = partes.map(p => porDias ? { v: e.has(p.desde) ? e.get(p.desde) : null } : suma(e, p));
+    const total = vals.length ? { v: vals.reduce((a, b) => a + b, 0), falta: vals.length < dias.length } : { v: null };
+    const prev = [...(antes.get(nombre) || new Map()).values()];
+    let vs = null;
+    if (vals.length >= dias.length / 2 && prev.length >= dias.length / 2) {
+      const m1 = total.v / vals.length, m0 = prev.reduce((a, b) => a + b, 0) / prev.length;
+      vs = m0 === 0 ? (m1 === 0 ? 0 : null) : (m1 - m0) / m0 * 100;
+    }
+    return { tipo: "est", nombre, celdas, total, conLluvia: vals.length ? vals.filter(v => v >= LLUVIA_DIA).length : null,
+             max: vals.length ? Math.max(...vals) : null, informe: `${vals.length} de ${dias.length}`, vs };
+  };
+  const promedioDe = (nombre, tipo, filas) => {
+    const prom = toma => { const xs = filas.map(toma).filter(c => c && c.v !== null); return xs.length ? { v: xs.reduce((a, c) => a + c.v, 0) / xs.length, falta: xs.some(c => c.falta) } : { v: null }; };
+    return { tipo, nombre, celdas: partes.map((_, i) => prom(f => f.celdas[i])), total: prom(f => f.total),
+             conLluvia: prom(f => f.conLluvia === null ? null : { v: f.conLluvia }).v, max: null, informe: "", vs: null };
+  };
+
+  const grupos = new Map();
+  for (const n of nombres) { const pv = provincia.has(n) ? provincia.get(n)[1] : ""; if (!grupos.has(pv)) grupos.set(pv, []); grupos.get(pv).push(n); }
+  const filas = [], todas = [];
+  for (const pv of [...grupos.keys()].sort((a, b) => !a ? 1 : !b ? -1 : a.localeCompare(b, "es"))) {
+    const fs = grupos.get(pv).sort((a, b) => a.localeCompare(b, "es")).map(filaDe);
+    filas.push({ tipo: "grupo", nombre: pv || "Sin provincia" }, ...fs);
+    if (fs.length > 1) filas.push(promedioDe(`Promedio de ${pv || "sin provincia"}`, "prom", fs));
+    todas.push(...fs);
+  }
+  if (todas.length > 1) filas.push(promedioDe("PROMEDIO GENERAL", "general", todas));
+
+  const notas = [];
+  if (filas.some(f => f.total && (f.total.falta || f.celdas.some(c => c.falta)))) notas.push("* Faltan días con informe en esa casilla, así que la lluvia real pudo ser mayor.");
+  if (hasta > ultimo) notas.push(`El período llega hasta el ${fechaBonita(hasta)}, pero el último día con datos es el ${fechaBonita(ultimo)}.`);
+  if (desde < primerDia) notas.push(`Los datos empiezan el ${fechaBonita(primerDia)}.`);
+  if (dobles) notas.push(`INDOMET publicó dos valores distintos para la misma estación en ${plural(dobles, "caso", "casos")}; esos días cuentan como sin informe.`);
+  notas.push(`Días con lluvia: días con ${LLUVIA_DIA} mm o más. Los promedios son de las estaciones con dato en esa casilla.`);
+  notas.push("Comparado con el año anterior: lluvia promedio por día con informe, frente a los mismos días de un año antes. Queda en blanco si alguno de los dos períodos tiene informe en menos de la mitad de los días, o si el año anterior no llovió.");
+  notas.push("Solo aparecen las estaciones con al menos un informe en el período.");
+  return {
+    desde, hasta, partes, filas, notas, nEst: todas.length,
+    titulo: `Informe de lluvias, del ${fechaBonita(desde)} al ${fechaBonita(hasta)}`,
+    subtitulo: [...new Set([describirSeleccion(), plural(todas.length, "estación", "estaciones")])].join(" · ") + " · Fuente: INDOMET",
+    encabezados: ["Estación", ...partes.map(p => p.nombre), "Total (mm)", "Días con lluvia", "Máx. en un día (mm)", "Días con informe", "Comparado con el año anterior"],
+  };
+}
+
+const mm = c => c.v === null ? "" : c.v.toFixed(1) + (c.falta ? "*" : "");
+const pct = v => v === null ? "" : `${v > 0 ? "+" : ""}${v.toFixed(0)} %`;
+function pintarInforme() {
+  informe = calcularInforme();
+  const I = informe;
+  let h = `<div class="fila barra"><div><h2>${esc(I.titulo)}</h2><p class="sub">${esc(I.subtitulo)}</p></div>
+    <button class="principal" id="inf-descargar" ${I.nEst ? "" : "disabled"}>Descargar Excel</button></div>`;
+  if (!I.nEst) { $("res-informes").innerHTML = h + `<p class="vacio">No hay datos de lluvia para esta selección.</p>`; return; }
+  h += `<div class="hoja"><table class="informe"><thead><tr>${I.encabezados.map((e, i) => `<th class="${i ? "n" : "est"}">${esc(e)}</th>`).join("")}</tr></thead><tbody>`;
+  for (const f of I.filas) {
+    if (f.tipo === "grupo") { h += `<tr class="grupo"><td class="est">${esc(f.nombre)}</td><td colspan="${I.encabezados.length - 1}"></td></tr>`; continue; }
+    const extra = f.tipo === "est"
+      ? [f.conLluvia ?? "", f.max === null ? "" : f.max.toFixed(1), f.informe, pct(f.vs)]
+      : [f.conLluvia === null ? "" : f.conLluvia.toFixed(1), "", "", ""];
+    h += `<tr class="${f.tipo}"><td class="est">${esc(f.nombre)}</td>${[...f.celdas.map(mm), mm(f.total), ...extra].map(v => `<td class="n">${esc(v)}</td>`).join("")}</tr>`;
+  }
+  h += `</tbody></table></div><ul class="notas">${I.notas.map(n => `<li>${esc(n)}</li>`).join("")}</ul>`;
+  $("res-informes").innerHTML = h;
+  $("inf-descargar").onclick = descargarInforme;
+}
+
+function descargarInforme() {
+  if (typeof XLSX === "undefined" || !informe) return;
+  const I = informe, hoja = [[I.titulo], [I.subtitulo], [], I.encabezados], formatos = [];
+  const num = (c, r, col) => { if (c.v === null) return ""; formatos.push([r, col, c.falta ? '0.0"*"' : "0.0"]); return +c.v.toFixed(1); };
+  for (const f of I.filas) {
+    const r = hoja.length;
+    if (f.tipo === "grupo") { hoja.push([f.nombre]); continue; }
+    const fila = [f.nombre, ...f.celdas.map((c, i) => num(c, r, i + 1)), num(f.total, r, f.celdas.length + 1)];
+    const k = f.celdas.length + 2;
+    if (f.tipo === "est") {
+      fila.push(f.conLluvia ?? "", f.max === null ? "" : num({ v: f.max }, r, k + 1), f.informe);
+      if (f.vs === null) fila.push(""); else { fila.push(Math.round(f.vs) / 100); formatos.push([r, k + 3, "+0%;-0%;0%"]); }
+    } else fila.push(f.conLluvia === null ? "" : num({ v: f.conLluvia }, r, k));
+    hoja.push(fila);
+  }
+  hoja.push([], ...I.notas.map(n => [n]));
+  const ws = XLSX.utils.aoa_to_sheet(hoja);
+  for (const [r, c, z] of formatos) { const celda = ws[XLSX.utils.encode_cell({ r, c })]; if (celda) celda.z = z; }
+  ws["!cols"] = I.encabezados.map((_, i) => ({ wch: i === 0 ? 32 : i <= I.partes.length ? (I.partes.length > 12 ? 7 : 9) : 14 }));
+  const libro = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(libro, ws, "Informe");
+  XLSX.writeFile(libro, `Informe de lluvias ${fechaBonita(I.desde).replaceAll("/", "-")} a ${fechaBonita(I.hasta).replaceAll("/", "-")}.xlsx`);
+}
+
 /* ---------- listas con "Seleccionar todo" ---------- */
 function abrirLista(id, boton) {
   if (menuAbierto && menuAbierto.dataset.col === "_l_" + id) { cerrarMenu(); return; }
@@ -984,6 +1164,9 @@ function ponerModo(nuevo) {
   $("modo-extra").hidden = nuevo === "tabla";
   $("res-analisis").hidden = nuevo !== "analisis";
   $("res-graficas").hidden = nuevo !== "graficas";
+  $("res-informes").hidden = nuevo !== "informes";
+  $("inf-controles").hidden = nuevo !== "informes";
+  $("panel-fechas").hidden = nuevo === "informes" && inf.marco !== "personalizado";
   cerrarMenu(); actualizarExtra();
 }
 function actualizarExtra() {
@@ -991,6 +1174,7 @@ function actualizarExtra() {
   document.querySelectorAll(".abre-lista").forEach(b => b.textContent = rotuloLista(LISTAS.find(l => l.id === b.dataset.lista)));
   if (modo === "analisis") $("res-analisis").innerHTML = analizar();
   if (modo === "graficas") dibujar();
+  if (modo === "informes") pintarInforme();
 }
 function cambiarRangoExtra() {
   let desde = leerFechaElegida("sd"), hasta = leerFechaElegida("sh");
@@ -1015,6 +1199,15 @@ function iniciarExtras() {
   for (const id of ["g-tipo", "g-medida", "g-agrupar"]) $(id).onchange = dibujar;
   $("g-descargar").onclick = descargarImagen;
   document.querySelectorAll(".abre-lista").forEach(b => b.onclick = () => abrirLista(b.dataset.lista, b));
+  inf.anio = Number(ultimo.slice(0, 4)); inf.mes = Number(ultimo.slice(5, 7)); inf.semana = lunesDe(ultimo);
+  pintarControlesInforme();
+  $("inf-marcos").onclick = e => { const b = e.target.closest("button"); if (b) { inf.marco = b.dataset.marco; pintarControlesInforme(); actualizarExtra(); } };
+  $("inf-elegir").onchange = e => {
+    if (e.target.id === "inf-semana") inf.semana = e.target.value;
+    if (e.target.id === "inf-mes") inf.mes = Number(e.target.value);
+    if (e.target.id === "inf-anio") inf.anio = Number(e.target.value);
+    actualizarExtra();
+  };
   $("modos").onclick = e => { const b = e.target.closest("button"); if (b) ponerModo(b.dataset.modo); };
   if (!window.Chart) $("g-nota").textContent = "No se pudo cargar la herramienta de gráficas. Intente recargar la página.";
 }
