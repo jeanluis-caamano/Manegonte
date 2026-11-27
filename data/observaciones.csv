@@ -50875,3 +50875,90 @@ fecha,num,estacion,provincia,localidad,tipo,tmax,tmin,lluvia,informe
 2026-11-25,098,VILLA GONZALES,,,,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-25-de-Noviembre-2026.pdf
 2026-11-25,099,VILLA ISABELA,,,,33.0,22.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-25-de-Noviembre-2026.pdf
 2026-11-25,100,VALLE NUEVO (EMA),,,,19.7,8.5,,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-25-de-Noviembre-2026.pdf
+2026-11-26,001,ANAMUYA (INDRHI),LA ALTAGRACIA,PRIVADA,EMAP,,,22.1,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,002,RÍO SAN JUAN,MARÍA TRINIDAD SÁNCHEZ,HOSP. MPAL. DR. DESIDERIO ACOSTA,EMCV,34.4,24.7,9.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,003,VILLA ALTAGRACIA,SAN CRISTÓBAL,ESCUELA JAVIER ANGULO GURIDI,EMCI,,,7.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,004,CABRERA,MARÍA TRINIDAD SÁNCHEZ,ESCUELA ARÍSTIDES FIALLO CABRAL,EMCI,34.0,26.0,7.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,005,JARDÍN BOTÁNICO NACIONAL,DISTRITO NACIONAL,JARDÍN BOTÁNICO NACIONAL,EMCV,30.2,23.5,5.2,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,006,SAN CRISTÓBAL,SAN CRISTÓBAL,INSTITUTO POLITÉCNICO LOYOLA,EMCI,33.0,19.0,4.2,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,007,ENSANCHE LA FE (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,4.1,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,008,LA AGUSTINA (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,4.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,009,EL MILLON (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,3.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,010,PALO DE VIENTO (EMA),SAN JUAN,PRIVADA,EMAP,27.0,15.6,3.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,011,SAN RAFAEL DEL YUMA,LA ALTAGRACIA,MINISTERIO DE AGRICULTURA,EMCI,31.9,23.0,3.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,012,SANTO DOMINGO ESTE,SANTO DOMINGO,INDOMET,EMCI,32.0,25.6,2.9,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,013,BELLA VISTA (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,2.8,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,014,SAMANÁ,SAMANÁ,COMANDANCIA DE PUERTO DE SAMANÁ,EMCI,33.8,16.4,2.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,015,NIZAO (EMA),PERAVIA,PRIVADA,EMAP,,,2.4,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,016,CENTRO DE LOS HEROES (EMA),DISTRITO NACIONAL,MINISTERIO DE ENERGIA Y MINA,EMAP,30.8,26.7,2.2,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,017,LOYOLA (EMA),SAN CRISTÓBAL,PRIVADA,EMAP,,,1.8,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,018,RANCHO ARRIBA,SAN JOSÉ DE OCOA,CENTRO TECNOLÓGICO COMUNITARIO,EMCI,27.7,18.3,1.8,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,019,LOS CACICAZGOS (EMA),DISTRITO NACIONAL,PRIVADA,EMAP,,,1.5,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,020,LOS JENGIBRES,NAGUA,INDRHI,EMCI,,,1.1,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,021,OVIEDO,PEDERNALES,CLÍNICA RURAL OVIEDO,EMCI,32.6,24.0,1.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,022,ARPT. DE LAS AMÉRICAS,SANTO DOMINGO,INDOMET,EMCI,32.0,24.0,0.8,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,023,PERALTA,AZUA,HOSP. MPAL. DE PERALTA,EMCI,30.5,17.0,0.8,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,024,ARPT. DE LA ROMANA,LA ROMANA,INDOMET,EMCI,32.2,23.5,0.6,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,025,HATO MAYOR,HATO MAYOR,MINISTERIO DE AGRICULTURA,EMCV,,,0.5,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,026,ENRIQUILLO,BARAHONA,MINISTERIO DE AGRICULTURA,EMCV,33.0,24.3,0.4,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,027,LA VICTORIA,SANTO DOMINGO,CUERPO DE BOMBEROS,EMCI,32.5,23.6,0.2,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,028,POLO,BARAHONA,INDOCAFE,EMCI,29.0,17.3,0.1,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,029,SAN JOSÉ DE OCOA,SAN JOSÉ DE OCOA,HOSP. SAN JOSÉ DE OCOA,EMCI,31.6,22.3,0.1,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,030,JARDÍN BOTÁNICO SANTIAGO (EMSANTIAGO,,JARDIN BOTANICO SANTIAGO,EMAI,33.4,25.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,031,SAJOMA (EMA),SANTIAGO,PLAN SIERRA,EMAI,32.9,23.7,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,032,ALTO BANDERA (EMA),LA VEGA,INTEC,EMAP,18.8,8.5,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,033,CONSTANZA (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,27.5,14.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,034,EL FACTOR (EMA),MARÍA TRINIDAD SÁNCHEZ,INTEC,EMAP,33.8,24.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,035,JARABACOA (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,31.6,18.9,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,036,LA YAGUITA (EMA),MONTE CRISTI,PROPIEDAD DEL VOLUNTARIO,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,037,LAS CANAS (EMA),MONTE CRISTI,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,32.3,23.5,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,038,LAS MATAS DE SANTA CRUZ (EMA,MONTE CRISTI,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,039,LOS COCOS (EMA),BAHORUCO,PRIVADA,EMAP,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,040,LOS TRES CHARCOS (EMA),PEDERNALES,PROPIEDAD DEL VOLUNTARIO,EMAP,26.7,23.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,041,MICHES (EMA),EL SEIBO,PRIVADA,EMAP,32.7,23.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,042,PRESA DE TAVERAS (EMA),LA VEGA,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,31.9,20.9,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,043,SABANETA (EMA),SANTIAGO RODRÍGUEZ,PROGRAMA MUNDIAL DE ALIMENTO,EMAP,34.5,22.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,044,ALTAMIRA,PUERTO PLATA,HOSP. MPAL. DE ALTAMIRA,EMCI,33.7,20.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,045,ARPT. ARROYO BARRIL,SAMANÁ,INDOMET,EMCI,32.7,23.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,046,ARPT. DE PUNTA CANA,LA ALTAGRACIA,INDOMET,EMCI,32.2,24.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,047,ARPT. DEL CIBAO,SANTIAGO,INDOMET,EMCI,33.6,23.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,048,ARPT. EL CATEY,SAMANÁ,INDOMET,EMCI,33.0,22.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,049,ARPT. GREGORIO LUPERÓN,PUERTO PLATA,INDOMET,EMCI,32.9,23.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,050,ARPT. LA ISABELA,SANTO DOMINGO,INDOMET,EMCI,32.0,22.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,051,ARPT. MARÍA MONTEZ,BARAHONA,INDOMET,EMCI,31.4,24.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,052,ARROYO LORO,SAN JUAN,IDIAF,EMCI,32.8,18.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,053,BAYAGUANA,MONTE PLATA,INDOMET,EMCI,33.5,21.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,054,CONSTANZA,LA VEGA,MINISTERIO DE AGRICULTURA,EMCI,29.6,12.7,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,055,DAJABÓN,DAJABÓN,INSTITUTO POLITÉCNICO LOYOLA,EMCI,36.2,20.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,056,GASPAR HERNÁNDEZ,ESPAILLAT,PROPIEDAD DEL EMPLEADO,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,057,HONDO VALLE,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCI,27.1,18.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,058,JARABACOA,LA VEGA,INDRHI / MARENA,EMCI,33.4,18.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,059,JIMANÍ,INDEPENDENCIA,MINISTERIO DE AGRICULTURA,EMCI,33.8,26.5,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,060,LA VEGA,LA VEGA,IATESA,EMCI,34.5,22.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,061,LOS LLANOS,SAN PEDRO DE MACORÍS,MINISTERIO DE AGRICULTURA,EMCI,33.3,23.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,062,MONTE CRISTI,MONTE CRISTI,INDOMET,EMCI,34.4,24.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,063,OLIVARES,PEDERNALES,INDRHI,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,064,PADRE LAS CASAS,AZUA,HOSP. NTRA. SRA. DEL CARMEN,EMCI,32.0,18.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,065,PALO ÍNDIO,PUERTO PLATA,MINISTERIO DE AGRICULTURA,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,066,PASO AL MEDIO,SAN PEDRO DE MACORÍS,INDRHI,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,067,PEDERNALES,PEDERNALES,INDRHI,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,068,RESTAURACIÓN,DAJABÓN,MINISTERIO DE AGRICULTURA,EMCI,28.5,15.3,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,069,SABANA DE LA MAR,HATO MAYOR,INDOMET,EMCI,33.8,22.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,070,SALCEDO,HERMANAS MIRABAL,PROPIEDAD DEL EMPLEADO,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,071,SAN FRANCISCO DE MACORÍS,DUARTE,San Francisco de Macorís (UASD),EMCI,32.9,23.8,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,072,SÁNCHEZ,SAMANÁ,MINISTERIO DE AGRICULTURA,EMCI,32.3,21.4,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,073,SANTIAGO RODRÍGUEZ,SANTIAGO RODRÍGUEZ,INDOMET,EMCI,34.6,24.2,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,074,TÁBARA ABAJO,AZUA,INDRHI,EMCI,35.6,22.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,075,TAVERA,SANTIAGO,INDRHI,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,076,VILLA GONZALES,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCI,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,077,VILLA RIVA,DUARTE,HOSP. MPAL. ALICIA DE LEGENDRE,EMCI,32.8,22.4,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,078,BONAO,MONSEÑOR NOUEL,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,079,EL SEIBO,EL SEIBO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,080,ELÍAS PIÑA,ELÍAS PIÑA,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,081,GURABO,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,082,JUMA BEJUCAL,MONSEÑOR NOUEL,IDIAF,EMCV,32.8,24.6,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,083,MAO,VALVERDE,INDRHI / MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,084,NAVARRETE,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,085,SABANA GRANDE DE BOYÁ,MONTE PLATA,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,086,TAMBORIL,SANTIAGO,MINISTERIO DE AGRICULTURA,EMCV,,,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
+2026-11-26,087,VILLA ISABELA,PUERTO PLATA,MINISTERIO DE AGRICULTURA,EMCV,33.8,21.0,0.0,https://indomet.gob.do/wp-content/uploads/2026/11/Temperaturas-extremas-y-precipitaciones-26-de-Noviembre-2026.pdf
